@@ -10,32 +10,24 @@ import './App.css';
 const PROFILE = {
   name: 'Diego Arruda',
   role: 'Especialista de Inovação',
-  tagline: 'MBA · CSPO · Product Owner · Transformação Digital · Inteligência Artificial',
-  location: 'São Paulo, Brasil',
-  email: 'diego88arruda@gmail.com',
-  linkedin: 'https://www.linkedin.com/in/diegoarruda',
-  whatsapp: 'https://wa.me/5511982661567',
+  org: 'Iguatemi S.A.',
+  tagline:
+    'Inteligência Artificial · IA Generativa e Agentes · Governança de IA · Inovação e Transformação Digital',
+  linkedin: 'https://www.linkedin.com/in/diegoarruda/',
   github: '', // preencher com a URL do GitHub quando definida
   summary:
-    'Profissional de tecnologia com 17 anos de experiência em gestão de projetos e soluções digitais para varejo e saúde. Atualmente conduzo iniciativas de Inteligência Artificial de ponta a ponta — da identificação de oportunidades à governança, integração e medição de impacto — sempre com abordagem data-driven e foco em escala.',
+    'Profissional de tecnologia com mais de 16 anos de experiência em varejo, shopping centers e saúde. Na Iguatemi S.A., atuo como Especialista de Inovação: lidero o squad de Inovação e IA, integro o Comitê de IA e conduzo agentes, automação e governança — da oportunidade à operação — com foco em escala e no impacto no dia a dia das áreas.',
 };
 
 const NETWORK_NODES = [
-  { year: '2004', label: ['Eletrônica'], x: 40, y: 236, anchor: 'start', target: 'earlier-2004' },
-  { year: '2009', label: ['Suporte &', 'Infraestrutura'], x: 234, y: 200, anchor: 'middle', target: 'earlier-2008' },
-  { year: '2012', label: ['Projetos de', 'Sistemas'], x: 428, y: 164, anchor: 'middle', target: 'earlier-2012' },
-  { year: '2018', label: ['Gestão de', 'Produtos Digitais'], x: 622, y: 124, anchor: 'middle', target: 'earlier-2018' },
-  {
-    year: '2022',
-    label: ['Gestão de Projetos', 'de Software e RPA'],
-    x: 816,
-    y: 88,
-    anchor: 'middle',
-    target: 'exp-1',
-  },
+  { year: '2009', label: ['Analista de', 'Sistemas'], x: 40, y: 236, anchor: 'start', target: 'earlier-2009' },
+  { year: '2016', label: ['Segurança da', 'Informação'], x: 234, y: 200, anchor: 'middle', target: 'earlier-2016' },
+  { year: '2017', label: ['Produtos Digitais', 'e IoT'], x: 428, y: 164, anchor: 'middle', target: 'exp-3' },
+  { year: '2022', label: ['Soluções', 'Digitais'], x: 622, y: 124, anchor: 'middle', target: 'exp-2' },
+  { year: '2024', label: ['Soluções', 'de TI'], x: 816, y: 88, anchor: 'middle', target: 'exp-1' },
   {
     year: '2025',
-    label: ['Arquitetura &', 'Governança de IA'],
+    label: ['Inovação', 'e IA'],
     x: 1010,
     y: 50,
     anchor: 'end',
@@ -49,91 +41,94 @@ const EXPERIENCE_RECENT = [
     period: 'jul 2025 — atual',
     role: 'Especialista de Inovação',
     org: 'Iguatemi S.A.',
-    tags: ['Gestão de Projetos', 'Inovação', 'Inteligência Artificial'],
+    tags: ['Inovação', 'Agentes de IA', 'Governança'],
     bullets: [
-      'Liderança de projetos estratégicos de inovação e tecnologia, com foco em eficiência operacional, ganhos de receita e transformação digital.',
-      'Condução de iniciativas de IA de ponta a ponta: identificação de oportunidades, governança, testes, integração com sistemas e medição de impacto.',
-      'Atuação como parceiro de negócio, mapeando necessidades e desenhando soluções escaláveis baseadas em dados.',
-      'Definição de KPIs, roadmap e evolução contínua das soluções digitais e de IA implantadas.',
+      'Liderança do squad de Inovação e IA (5 pessoas) e integração ao Comitê de IA.',
+      'Adoção de agentes de IA em produção, com redução de trabalho repetitivo e ganhos de eficiência operacional.',
+      'Agente de Contratos do Shopping em Copilot Studio e Microsoft Teams, com dados do Salesforce e do BigQuery.',
+      'Gestão de custos e licenças de IA, definição de KPIs e roadmap, e formação dos Champions de IA.',
     ],
   },
   {
-    period: 'nov 2024 — jun 2025',
+    period: 'jan 2024 — jun 2025',
     role: 'Especialista de Soluções TI',
     org: 'Iguatemi S.A.',
-    tags: ['Gestão de Projetos', 'Software', 'RPA'],
+    tags: ['RPA', 'Chatbots', 'Portal do Lojista'],
     bullets: [
-      'Liderança de projetos de automação de processos (RPA) para redução de custos e ganho de eficiência.',
-      'Gestão do portal do lojista, aprimorando comunicação e integração operacional entre lojistas e administração.',
-      'Gestão das ferramentas de workflow e do Portal de Aprovações.',
-    ],
-  },
-  {
-    period: 'jan 2024 — out 2024',
-    role: 'Especialista de Soluções TI',
-    org: 'Iguatemi S.A.',
-    tags: ['Gestão de Projetos', 'Infraestrutura'],
-    bullets: [
-      'Planejamento, administração e monitoramento de projetos de TI para operações de shopping, com metodologias PMI e Agile.',
-      'Liderança da nova rede Wi-Fi do Shopping Pátio Higienópolis e da infraestrutura de novos espaços (teatro, auditórios, lojas).',
+      'Automação de processos com RPA e chatbots para a operação dos shoppings.',
+      'Gestão do Portal do Lojista, de fornecedores e de contratos.',
     ],
   },
   {
     period: 'abr 2022 — dez 2023',
     role: 'Analista de Sistemas Sênior',
     org: 'Strattner',
-    tags: ['Produtos Digitais', 'UX', 'IA'],
+    tags: ['Soluções Digitais', 'IA em Saúde', 'Product Owner'],
     bullets: [
-      'Atuação como Product Owner, liderando produtos digitais da concepção ao lançamento.',
-      'Implementação de soluções de IA para detecção precoce de achados em saúde (ex: câncer), melhorando precisão diagnóstica.',
-      'Participação na incubadora de healthcare, ideando novas soluções para o setor.',
+      'Liderança na criação do Departamento de Soluções Digitais.',
+      'IA para detecção precoce de câncer em exames.',
+      'Atuação como Product Owner; projeto premiado HUB AI, Assistant Healthcare e Telementoring.',
+    ],
+  },
+  {
+    period: 'ago 2017 — mar 2022',
+    role: 'Analista de Sistemas Pleno',
+    org: 'Strattner',
+    tags: ['Product Owner', 'IoT', 'Saúde'],
+    bullets: [
+      'Product Owner em produtos digitais e em iniciativas de IoT para a saúde.',
+      'Projetos premiados S.Connect e Atendimento 24/7 (chatbot).',
     ],
   },
 ];
 
 const EXPERIENCE_EARLIER = [
   {
-    id: 'earlier-2018',
-    period: '2018 — 2022',
-    text: 'Strattner — Analista de Sistemas Pleno atuando em produtos digitais, IoT para saúde e projetos internos como Product Owner e Scrum Master.',
+    id: 'earlier-2016',
+    period: '2016 — 2017',
+    text: 'Simpress (fev/2016 a ago/2017) — indicadores de segurança da informação, com DLP e Endpoint Symantec.',
   },
   {
-    id: 'earlier-2012',
-    period: '2012 — 2018',
-    text: 'Iguatemi Empresa de Shopping Centers — Analista de Sistemas, liderando projetos de infraestrutura, redes e telefonia para toda a rede de shoppings do grupo.',
-  },
-  {
-    id: 'earlier-2008',
-    period: '2008 — 2012',
-    text: 'Técnico de TI (Shopping Iguatemi) e Suporte (FINNET) — telefonia IP, redes Cisco, administração de ambiente e atendimento a executivos.',
-  },
-  {
-    id: 'earlier-2004',
-    period: '2004 — 2008',
-    text: 'Início de carreira em infraestrutura elétrica e de redes (Saint-Gobain), base técnica que fundamenta a visão de arquitetura de hoje.',
+    id: 'earlier-2009',
+    period: '2009 — 2015',
+    text: 'Iguatemi (dez/2009 a set/2015) — Analista de Sistemas e líder de TI nas inaugurações dos shoppings Ribeirão Preto, São José do Rio Preto e Esplanada.',
   },
 ];
 
 const EDUCATION = [
-  { period: '2025 — 2026', course: 'Pós-graduação em Inteligência Artificial', school: 'FIAP' },
-  { period: '2021 — 2023', course: 'MBA em Transformação Digital', school: 'Universidade Presbiteriana Mackenzie' },
-  { period: '2017 — 2018', course: 'MBA em Gestão de Cibersegurança', school: 'FIAP' },
-  { period: '2013 — 2016', course: 'Tecnologia em Redes de Computadores', school: 'Centro Universitário FIEO' },
+  {
+    period: 'em curso',
+    course: 'MBA em Inteligência Artificial',
+    school: 'FIAP · conclusão prevista em out/2027',
+  },
+  { period: '2023', course: 'MBA em Transformação Digital', school: 'Universidade Presbiteriana Mackenzie' },
+  { period: '2018', course: 'MBA em Gestão de Cibersegurança', school: 'FIAP' },
+  { period: '2016', course: 'Tecnologia em Redes de Computadores', school: 'Centro Universitário FIEO' },
 ];
 
-const CERTIFICATIONS = ['Green Belt em Lean Six-Sigma', 'Digital Products Hero'];
+const CERTIFICATIONS = [
+  'CSPO (2020)',
+  'Green Belt Lean Six Sigma',
+  'Digital Products Hero (FIAP, 2022)',
+];
 
 const AWARDS = [
-  '1º Lugar — Projeto de Inovação: Smart Connect',
-  '1º Lugar — Projeto de Inovação: Atendimento 24/7',
-  '1º Lugar — Projeto de Inovação: HUB AI, Assistant Healthcare e Telementoring',
-  'Destaque — Gestão de Processos e Atingimento de Metas',
+  '1º lugar — HUB AI, Assistant Healthcare e Telementoring (2023)',
+  '1º lugar — Atendimento 24/7 (2021)',
+  '1º lugar — Smart Connect (2020)',
+  'Destaque em Gestão de Processos e Atingimento de Metas (2020)',
 ];
 
 const SKILLS = {
-  'Gestão & Estratégia': ['Gestão de Projetos', 'PMI & Agile', 'Product Ownership (CSPO)', 'Governança de IA'],
-  'IA & Automação': ['Machine Learning', 'Redes Neurais Profundas (DNN)', 'RPA', 'Claude API'],
-  Plataformas: ['Microsoft Copilot Studio', 'Power Automate', 'Azure APIM', 'Snowflake Cortex'],
+  'IA & Agentes': [
+    'IA generativa',
+    'LLMs',
+    'Agentes e multiagentes',
+    'Engenharia de prompt',
+    'Governança de IA',
+  ],
+  'Automação & Dados': ['RPA', 'Power Automate', 'n8n', 'BigQuery', 'Snowflake', 'Databricks', 'Power BI'],
+  'Plataformas & Métodos': ['Copilot Studio', 'M365 Copilot', 'Azure AI', 'GCP', 'APIs', 'Agile/Scrum', 'PMI'],
 };
 
 const PROJECTS = [
@@ -153,9 +148,9 @@ const PROJECTS = [
     tags: ['React', 'Azure Entra ID', 'Governança'],
   },
   {
-    title: 'Agentes de Contratos e Performance de Lojas',
-    desc: 'Agentes de IA para apoio a contratos, programa de relacionamento e acompanhamento de performance de lojas, com dados estruturados no Snowflake.',
-    tags: ['Snowflake Cortex', 'Claude API', 'Dados'],
+    title: 'Agente de Contratos do Shopping',
+    desc: 'Agente em Copilot Studio e Microsoft Teams para apoio a contratos, com dados do Salesforce e do BigQuery.',
+    tags: ['Copilot Studio', 'Microsoft Teams', 'BigQuery'],
   },
   {
     title: 'Agente de Comunicados Corporativos',
@@ -210,8 +205,8 @@ function Reveal({ as: Tag = 'div', className = '', children, delay = 0 }) {
 
 /* ---------------------------------------------------------
    Grafo de rede — assinatura visual da hero
-   Representa a progressão de carreira de Diego: de redes e
-   infraestrutura até arquitetura e governança de IA.
+   Representa a progressão de carreira de Diego: de sistemas e
+   segurança da informação até inovação e governança de IA.
 --------------------------------------------------------- */
 function CareerGraph() {
   return (
@@ -311,7 +306,7 @@ function Hero() {
     <section id="top" className="hero">
       <div className="hero-top">
         <div className="hero-copy">
-          <p className="eyebrow">{PROFILE.location}</p>
+          <p className="eyebrow">{PROFILE.org}</p>
           <h1 className="hero-name">{PROFILE.name}</h1>
           <p className="hero-role">{PROFILE.role}</p>
           <p className="hero-tagline">{PROFILE.tagline}</p>
@@ -350,7 +345,7 @@ function Trajetoria() {
       <div className="section-inner">
         <Reveal>
           <p className="section-eyebrow">02 — Trajetória</p>
-          <h2 className="section-title">17 anos entre produto, dados e IA</h2>
+          <h2 className="section-title">Mais de 16 anos em varejo, saúde e IA</h2>
         </Reveal>
 
         <div className="timeline">
@@ -380,7 +375,7 @@ function Trajetoria() {
         </div>
 
         <Reveal className="earlier-block">
-          <h3 className="earlier-title">Trajetória anterior (2004 — 2022)</h3>
+          <h3 className="earlier-title">Trajetória anterior (2009 — 2017)</h3>
           <div className="earlier-list">
             {EXPERIENCE_EARLIER.map((e) => (
               <div key={e.period} id={e.id} className="earlier-item">
@@ -501,16 +496,10 @@ function Contato() {
         <p className="section-eyebrow">06 — Contato</p>
         <h2 className="section-title">Vamos conversar</h2>
         <p className="lead">
-          Aberto a novas conexões sobre arquitetura corporativa, governança de IA e transformação digital.
+          Inovação, agentes de IA e transformação digital na Iguatemi S.A. O LinkedIn reúne a trajetória e os temas em que atuo.
         </p>
         <div className="contact-links">
-          <a href={`mailto:${PROFILE.email}`} className="btn btn--primary">
-            {PROFILE.email}
-          </a>
-          <a href={PROFILE.whatsapp} target="_blank" rel="noreferrer" className="btn btn--ghost">
-            WhatsApp
-          </a>
-          <a href={PROFILE.linkedin} target="_blank" rel="noreferrer" className="btn btn--ghost">
+          <a href={PROFILE.linkedin} target="_blank" rel="noreferrer" className="btn btn--primary">
             LinkedIn
           </a>
           {PROFILE.github ? (
@@ -519,9 +508,7 @@ function Contato() {
             </a>
           ) : null}
         </div>
-        <p className="footer-note">
-          {PROFILE.location} · © {new Date().getFullYear()} {PROFILE.name}
-        </p>
+        <p className="footer-note">© {new Date().getFullYear()} {PROFILE.name}</p>
       </Reveal>
     </section>
   );
