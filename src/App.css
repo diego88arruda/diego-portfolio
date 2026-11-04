@@ -42,7 +42,8 @@
   transition: color 0.2s ease;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.is-active {
   color: var(--text);
 }
 
@@ -194,7 +195,7 @@
 /* ---------- Career graph (assinatura) ---------- */
 .graph-wrap {
   width: 100%;
-  margin-top: 8px;
+  margin: 0 0 40px;
 }
 
 .graph-svg {
@@ -313,6 +314,10 @@
   margin: 0 0 48px;
   max-width: 640px;
   line-height: 1.2;
+}
+
+.section-title--tight {
+  margin-bottom: 16px;
 }
 
 .lead {
@@ -588,6 +593,136 @@
   margin: 0;
 }
 
+/* ---------- Portas da home ---------- */
+.doors {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.door {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  min-height: 220px;
+  padding: 28px;
+  text-decoration: none;
+  color: inherit;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.door:hover {
+  border-color: var(--accent-line);
+  transform: translateY(-2px);
+}
+
+.door h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: clamp(28px, 3vw, 36px);
+  line-height: 1.15;
+  margin: 0;
+}
+
+.door p {
+  margin: 0;
+  color: var(--text-dim);
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+.door-go {
+  margin-top: auto;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* ---------- Serviços ---------- */
+.services-lead {
+  max-width: 720px;
+  margin-bottom: 36px;
+}
+
+.diagnostico {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+  margin: 8px 0 48px;
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-elevated);
+}
+
+.diagnostico-title {
+  margin-bottom: 12px;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.service-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 28px;
+}
+
+.service-kicker {
+  display: block;
+  margin: 0 0 6px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.service-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-soft);
+}
+
+.service-value {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.case-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 28px;
+  margin-bottom: 28px;
+}
+
+.case-summary {
+  font-size: 16px;
+  margin-bottom: 22px;
+}
+
+.case-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-bottom: 18px;
+}
+
 /* ---------- Responsivo ---------- */
 @media (max-width: 720px) {
   .hero-top {
@@ -623,8 +758,16 @@
 
   .formacao-grid,
   .skills-grid,
-  .projects-grid {
+  .projects-grid,
+  .doors,
+  .service-grid,
+  .case-split {
     grid-template-columns: 1fr;
+  }
+
+  .diagnostico {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .timeline {

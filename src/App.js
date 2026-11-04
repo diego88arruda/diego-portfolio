@@ -131,6 +131,53 @@ const SKILLS = {
   'Plataformas & Métodos': ['Copilot Studio', 'M365 Copilot', 'Azure AI', 'GCP', 'APIs', 'Agile/Scrum', 'PMI'],
 };
 
+const WHATSAPP_MESSAGE = 'Olá Diego, vim pelo seu portfólio e gostaria de um diagnóstico.';
+const WHATSAPP_URL = `https://wa.me/5511982661567?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+
+const SERVICES = [
+  {
+    title: 'Site e presença digital rápida',
+    problem: 'A empresa existe, mas quem chega pela internet não entende o que ela faz nem como dar o próximo passo.',
+    deadline: '1 a 2 semanas',
+  },
+  {
+    title: 'Automação de rotinas',
+    problem: 'O time repete cópia de dados, avisos e conferências que uma rotina poderia assumir.',
+    deadline: '2 a 4 semanas',
+  },
+  {
+    title: 'Atendente de IA',
+    problem: 'As mesmas perguntas, no WhatsApp ou no site, ocupam quem deveria cuidar do que é novo.',
+    deadline: '2 a 4 semanas',
+  },
+  {
+    title: 'Sistema sob medida enxuto',
+    problem: 'A operação não cabe numa planilha nem num sistema genérico, e um projeto longo não cabe agora.',
+    deadline: '4 a 8 semanas',
+  },
+  {
+    title: 'Consultoria e diagnóstico',
+    problem: 'Há várias ideias na mesa e falta clareza sobre o que fazer primeiro.',
+    deadline: 'cerca de 1 semana',
+  },
+  {
+    title: 'Manutenção mensal',
+    problem: 'O que já foi entregue precisa de ajuste, acompanhamento e pequenas evoluções todo mês.',
+    deadline: 'ciclo mensal',
+  },
+];
+
+const CASE_INOVALAB = {
+  name: 'InovaLab',
+  href: 'https://inovalab3d.vercel.app/',
+  summary:
+    'Estúdio de impressão 3D que precisava mostrar as peças, receber pedidos e conversar sobre o que ainda não está no catálogo.',
+  before:
+    'Quem não conhecia o trabalho dependia de já saber o que pedir. Não havia uma vitrine com as peças, as cores e o caminho do pedido.',
+  after:
+    'O site apresenta os produtos, explica como pedir pelo WhatsApp e deixa claro que uma ideia fora do catálogo também pode virar peça.',
+};
+
 const PROJECTS = [
   {
     title: 'Agente Executivo',
@@ -263,25 +310,28 @@ function CareerGraph() {
 
 /* --------------------------------------------------------- */
 
-function Nav() {
+function Nav({ view }) {
   const [open, setOpen] = useState(false);
   const links = [
-    ['Sobre', '#sobre'],
-    ['Trajetória', '#trajetoria'],
-    ['Formação', '#formacao'],
-    ['Skills', '#skills'],
-    ['Projetos', '#projetos'],
-    ['Contato', '#contato'],
+    ['Início', '#inicio', 'home'],
+    ['Meu perfil', '#perfil', 'perfil'],
+    ['Serviços', '#servicos', 'servicos'],
   ];
   return (
     <header className="nav">
       <div className="nav-inner">
-        <a href="#top" className="nav-name">
+        <a href="#inicio" className="nav-name">
           Diego Arruda
         </a>
         <nav className={`nav-links ${open ? 'nav-links--open' : ''}`}>
-          {links.map(([label, href]) => (
-            <a key={href} href={href} onClick={() => setOpen(false)}>
+          {links.map(([label, href, key]) => (
+            <a
+              key={href}
+              href={href}
+              className={view === key ? 'is-active' : undefined}
+              aria-current={view === key ? 'page' : undefined}
+              onClick={() => setOpen(false)}
+            >
               {label}
             </a>
           ))}
@@ -301,36 +351,41 @@ function Nav() {
   );
 }
 
-function Hero() {
+function Home() {
   return (
-    <section id="top" className="hero">
+    <section id="inicio" className="hero">
       <div className="hero-top">
         <div className="hero-copy">
-          <p className="eyebrow">{PROFILE.org}</p>
+          <p className="eyebrow">Tecnologia e consultoria</p>
           <h1 className="hero-name">{PROFILE.name}</h1>
           <p className="hero-role">{PROFILE.role}</p>
           <p className="hero-tagline">{PROFILE.tagline}</p>
-          <div className="hero-cta">
-            <a className="btn btn--primary" href="#projetos">
-              Ver projetos
-            </a>
-            <a className="btn btn--ghost" href="#contato">
-              Contato
-            </a>
-          </div>
         </div>
         <div className="hero-photo-wrap">
           <img src="/diego-arruda.jpg" alt="Diego Arruda" className="hero-photo" />
         </div>
       </div>
-      <CareerGraph />
+      <div className="doors">
+        <a className="door" href="#trajetoria">
+          <p className="eyebrow">Perfil</p>
+          <h2>Meu perfil</h2>
+          <p>A trajetória em tecnologia, a formação e os projetos — numa linha do tempo própria.</p>
+          <span className="door-go">Ver a trajetória</span>
+        </a>
+        <a className="door" href="#servicos">
+          <p className="eyebrow">Empresas</p>
+          <h2>Serviços para empresas</h2>
+          <p>Pacotes para pequenas e médias empresas, com o problema, o prazo típico e o valor sob consulta.</p>
+          <span className="door-go">Ver os pacotes</span>
+        </a>
+      </div>
     </section>
   );
 }
 
 function Sobre() {
   return (
-    <section id="sobre" className="section">
+    <section id="perfil" className="section">
       <Reveal as="div" className="section-inner section-inner--narrow">
         <p className="section-eyebrow">01 — Sobre</p>
         <p className="lead">{PROFILE.summary}</p>
@@ -347,6 +402,8 @@ function Trajetoria() {
           <p className="section-eyebrow">02 — Trajetória</p>
           <h2 className="section-title">Mais de 16 anos em varejo, saúde e IA</h2>
         </Reveal>
+
+        <CareerGraph />
 
         <div className="timeline">
           {EXPERIENCE_RECENT.map((job, i) => (
@@ -496,11 +553,14 @@ function Contato() {
         <p className="section-eyebrow">06 — Contato</p>
         <h2 className="section-title">Vamos conversar</h2>
         <p className="lead">
-          Inovação, agentes de IA e transformação digital na Iguatemi S.A. O LinkedIn reúne a trajetória e os temas em que atuo.
+          O LinkedIn reúne a trajetória. Para um problema da sua empresa, o caminho é o dos serviços.
         </p>
         <div className="contact-links">
           <a href={PROFILE.linkedin} target="_blank" rel="noreferrer" className="btn btn--primary">
             LinkedIn
+          </a>
+          <a href="#servicos" className="btn btn--ghost">
+            Serviços para empresas
           </a>
           {PROFILE.github ? (
             <a href={PROFILE.github} target="_blank" rel="noreferrer" className="btn btn--ghost">
@@ -514,18 +574,153 @@ function Contato() {
   );
 }
 
+function DiagnosticoCta() {
+  return (
+    <div className="diagnostico">
+      <div>
+        <h2 className="section-title diagnostico-title">Diagnóstico gratuito</h2>
+        <p className="lead">
+          Uma conversa para entender o problema e indicar por onde começar. O botão abre o WhatsApp com a mensagem pronta.
+        </p>
+      </div>
+      <a className="btn btn--primary" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+        WhatsApp
+      </a>
+    </div>
+  );
+}
+
+function Servicos() {
+  return (
+    <>
+      <section id="servicos" className="section">
+        <div className="section-inner">
+          <Reveal>
+            <p className="section-eyebrow">Consultoria</p>
+            <h2 className="section-title section-title--tight">Serviços para empresas</h2>
+            <p className="lead services-lead">
+              Para pequenas e médias empresas que precisam transformar uma necessidade do dia a dia em site, automação ou agente de IA. Seis pacotes, cada um com o problema que resolve e um prazo típico. O valor é sob consulta.
+            </p>
+          </Reveal>
+          <Reveal>
+            <DiagnosticoCta />
+          </Reveal>
+          <div className="service-grid">
+            {SERVICES.map((service, i) => (
+              <Reveal key={service.title} className="service-card" delay={i * 70}>
+                <h3 className="project-title">{service.title}</h3>
+                <p className="service-kicker">Problema</p>
+                <p className="project-desc">{service.problem}</p>
+                <div className="service-meta">
+                  <div>
+                    <span className="service-kicker">Prazo típico</span>
+                    <p className="service-value">{service.deadline}</p>
+                  </div>
+                  <div>
+                    <span className="service-kicker">Valor</span>
+                    <p className="service-value">Sob consulta</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="section-inner">
+          <Reveal>
+            <p className="section-eyebrow">Primeiro caso</p>
+            <h2 className="section-title">InovaLab</h2>
+          </Reveal>
+          <Reveal className="case-card">
+            <p className="project-desc case-summary">{CASE_INOVALAB.summary}</p>
+            <div className="case-split">
+              <div>
+                <p className="service-kicker">Antes</p>
+                <p className="project-desc">{CASE_INOVALAB.before}</p>
+              </div>
+              <div>
+                <p className="service-kicker">Depois</p>
+                <p className="project-desc">{CASE_INOVALAB.after}</p>
+              </div>
+            </div>
+            <a className="door-go" href={CASE_INOVALAB.href} target="_blank" rel="noreferrer">
+              inovalab3d.vercel.app
+            </a>
+          </Reveal>
+          <Reveal>
+            <DiagnosticoCta />
+          </Reveal>
+          <p className="footer-note">© {new Date().getFullYear()} {PROFILE.name}</p>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function viewFromHash(hash) {
+  const id = hash.replace('#', '');
+  if (id === 'servicos') return 'servicos';
+  if (
+    id === 'perfil' ||
+    id === 'trajetoria' ||
+    id === 'formacao' ||
+    id === 'skills' ||
+    id === 'projetos' ||
+    id === 'contato' ||
+    id.startsWith('exp-') ||
+    id.startsWith('earlier-')
+  ) {
+    return 'perfil';
+  }
+  return 'home';
+}
+
+function useHash() {
+  const [hash, setHash] = useState(() => window.location.hash || '#inicio');
+
+  useEffect(() => {
+    const onHashChange = () => setHash(window.location.hash || '#inicio');
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
+
+  useEffect(() => {
+    const id = hash.replace('#', '');
+    if (!id || id === 'inicio' || id === 'top' || id === 'perfil' || id === 'servicos') {
+      window.scrollTo(0, 0);
+      return undefined;
+    }
+    const frame = window.requestAnimationFrame(() => {
+      document.getElementById(id)?.scrollIntoView();
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [hash]);
+
+  return hash;
+}
+
 export default function App() {
+  const hash = useHash();
+  const view = viewFromHash(hash);
+
   return (
     <div className="page">
-      <Nav />
+      <Nav view={view} />
       <main>
-        <Hero />
-        <Sobre />
-        <Trajetoria />
-        <Formacao />
-        <Skills />
-        <Projetos />
-        <Contato />
+        {view === 'home' ? <Home /> : null}
+        {view === 'perfil' ? (
+          <>
+            <Sobre />
+            <Trajetoria />
+            <Formacao />
+            <Skills />
+            <Projetos />
+            <Contato />
+          </>
+        ) : null}
+        {view === 'servicos' ? <Servicos /> : null}
       </main>
     </div>
   );
