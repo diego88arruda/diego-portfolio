@@ -1,727 +1,1447 @@
-import React, { useEffect, useRef, useState } from 'react';
-import './App.css';
+import { Fragment, useEffect, useRef, useState } from 'react';
+import { jsx, jsxs } from 'react/jsx-runtime';
 
-/* ---------------------------------------------------------
-   Dados de conteúdo
-   Edite os valores abaixo para atualizar textos, projetos,
-   experiências e links sem mexer no layout.
---------------------------------------------------------- */
+const f = { jsx, jsxs, Fragment };
+const l = { useState, useEffect, useRef };
 
-const PROFILE = {
-  name: 'Diego Arruda',
-  role: 'Especialista de Inovação',
-  org: 'Iguatemi S.A.',
-  tagline:
-    'Inteligência Artificial · IA Generativa e Agentes · Governança de IA · Inovação e Transformação Digital',
-  linkedin: 'https://www.linkedin.com/in/diegoarruda/',
-  github: '', // preencher com a URL do GitHub quando definida
-  summary:
-    'Profissional de tecnologia com mais de 16 anos de experiência em varejo, shopping centers e saúde. Na Iguatemi S.A., atuo como Especialista de Inovação: lidero o squad de Inovação e IA, integro o Comitê de IA e conduzo agentes, automação e governança — da oportunidade à operação — com foco em escala e no impacto no dia a dia das áreas.',
+const p = {
+  fill: `none`,
+  stroke: `currentColor`,
+  strokeWidth: 1.7,
+  strokeLinecap: `round`,
+  strokeLinejoin: `round`,
+  "aria-hidden": !0,
 };
-
-const NETWORK_NODES = [
-  { year: '2009', label: ['Analista de', 'Sistemas'], x: 40, y: 236, anchor: 'start', target: 'earlier-2009' },
-  { year: '2016', label: ['Segurança da', 'Informação'], x: 234, y: 200, anchor: 'middle', target: 'earlier-2016' },
-  { year: '2017', label: ['Produtos Digitais', 'e IoT'], x: 428, y: 164, anchor: 'middle', target: 'exp-3' },
-  { year: '2022', label: ['Soluções', 'Digitais'], x: 622, y: 124, anchor: 'middle', target: 'exp-2' },
-  { year: '2024', label: ['Soluções', 'de TI'], x: 816, y: 88, anchor: 'middle', target: 'exp-1' },
-  {
-    year: '2025',
-    label: ['Inovação', 'e IA'],
-    x: 1010,
-    y: 50,
-    anchor: 'end',
-    current: true,
-    target: 'exp-0',
-  },
+function m(e) {
+  return (0, f.jsxs)(`svg`, {
+    viewBox: `0 0 24 24`,
+    ...p,
+    ...e,
+    children: [
+      (0, f.jsx)(`path`, {
+        d: `M12 3 5.5 6v5.2c0 4.1 2.8 7.1 6.5 8.3 3.7-1.2 6.5-4.2 6.5-8.3V6L12 3Z`,
+      }),
+      (0, f.jsx)(`path`, { d: `M9.2 12.1 11 14l3.8-4.2` }),
+    ],
+  });
+}
+function h(e) {
+  return (0, f.jsxs)(`svg`, {
+    viewBox: `0 0 24 24`,
+    ...p,
+    ...e,
+    children: [
+      (0, f.jsx)(`ellipse`, { cx: `12`, cy: `6.2`, rx: `6.5`, ry: `2.4` }),
+      (0, f.jsx)(`path`, {
+        d: `M5.5 6.2v4.6c0 1.3 2.9 2.4 6.5 2.4s6.5-1.1 6.5-2.4V6.2`,
+      }),
+      (0, f.jsx)(`path`, {
+        d: `M5.5 10.8v4.6c0 1.3 2.9 2.4 6.5 2.4s6.5-1.1 6.5-2.4v-4.6`,
+      }),
+    ],
+  });
+}
+function g(e) {
+  return (0, f.jsxs)(`svg`, {
+    viewBox: `0 0 24 24`,
+    ...p,
+    ...e,
+    children: [
+      (0, f.jsx)(`path`, { d: `M4 19h16` }),
+      (0, f.jsx)(`path`, { d: `M6.5 15.5 10 11l3 3 5-7` }),
+      (0, f.jsx)(`path`, { d: `M18 7h-3.2` }),
+    ],
+  });
+}
+function _(e) {
+  return (0, f.jsxs)(`svg`, {
+    viewBox: `0 0 24 24`,
+    ...p,
+    ...e,
+    children: [
+      (0, f.jsx)(`circle`, { cx: `12`, cy: `12`, r: `3.1` }),
+      (0, f.jsx)(`path`, {
+        d: `M12 4.2v2.1M12 17.7v2.1M4.2 12h2.1M17.7 12h2.1M6.5 6.5l1.5 1.5M16 16l1.5 1.5M17.5 6.5 16 8M8 16l-1.5 1.5`,
+      }),
+      (0, f.jsx)(`circle`, { cx: `12`, cy: `12`, r: `7.2` }),
+    ],
+  });
+}
+function v(e) {
+  return (0, f.jsxs)(`svg`, {
+    viewBox: `0 0 24 24`,
+    ...p,
+    ...e,
+    children: [
+      (0, f.jsx)(`circle`, { cx: `9`, cy: `8.2`, r: `2.3` }),
+      (0, f.jsx)(`path`, {
+        d: `M4.4 18c.4-3 2.3-4.6 4.6-4.6 2.3 0 4.2 1.6 4.6 4.6`,
+      }),
+      (0, f.jsx)(`circle`, { cx: `16.2`, cy: `8.8`, r: `1.9` }),
+      (0, f.jsx)(`path`, { d: `M15 13.6c2 .3 3.6 1.7 4 4.4` }),
+    ],
+  });
+}
+function y(e) {
+  return (0, f.jsx)(`svg`, {
+    viewBox: `0 0 24 24`,
+    ...p,
+    ...e,
+    children: (0, f.jsx)(`path`, { d: `M5 12h14M13 6l6 6-6 6` }),
+  });
+}
+function b(e) {
+  return (0, f.jsxs)(`svg`, {
+    viewBox: `0 0 24 24`,
+    ...p,
+    ...e,
+    children: [
+      (0, f.jsx)(`path`, { d: `M14 5h5v5` }),
+      (0, f.jsx)(`path`, { d: `M19 5 10 14` }),
+      (0, f.jsx)(`path`, {
+        d: `M11 6H6.5A1.5 1.5 0 0 0 5 7.5v10A1.5 1.5 0 0 0 6.5 19h10a1.5 1.5 0 0 0 1.5-1.5V13`,
+      }),
+    ],
+  });
+}
+function ee(e) {
+  return (0, f.jsx)(`svg`, {
+    viewBox: `0 0 24 24`,
+    fill: `currentColor`,
+    "aria-hidden": !0,
+    ...e,
+    children: (0, f.jsx)(`path`, {
+      d: `M6.5 9.2H3.9V20h2.6V9.2ZM5.2 4A1.55 1.55 0 1 0 5.2 7a1.55 1.55 0 0 0 0-3ZM20.1 20h-2.6v-5.5c0-1.5-.5-2.5-1.8-2.5-1 0-1.5.7-1.8 1.3-.1.2-.1.6-.1.9V20h-2.6s.05-8.8 0-10.8h2.6v1.5c.4-.6 1.2-1.7 2.9-1.7 2.1 0 3.7 1.4 3.7 4.4V20Z`,
+    }),
+  });
+}
+function te(e) {
+  return (0, f.jsx)(`svg`, {
+    viewBox: `0 0 24 24`,
+    ...p,
+    ...e,
+    children: (0, f.jsx)(`path`, { d: `M4 7h16M4 12h16M4 17h16` }),
+  });
+}
+function ne(e) {
+  return (0, f.jsx)(`svg`, {
+    viewBox: `0 0 24 24`,
+    ...p,
+    ...e,
+    children: (0, f.jsx)(`path`, { d: `M6 6l12 12M18 6 6 18` }),
+  });
+}
+var re = { shield: m, database: h, chart: g, gear: _, people: v };
+function x({ name: e, ...t }) {
+  let n = re[e];
+  return (0, f.jsx)(n, { ...t });
+}
+function ie({ name: e }) {
+  return e === `Copilot Studio`
+    ? (0, f.jsxs)(`svg`, {
+        viewBox: `0 0 24 24`,
+        className: `tool-mark`,
+        "aria-hidden": !0,
+        children: [
+          (0, f.jsx)(`rect`, {
+            x: `3`,
+            y: `3`,
+            width: `8`,
+            height: `8`,
+            rx: `1.6`,
+            fill: `#7b83eb`,
+          }),
+          (0, f.jsx)(`rect`, {
+            x: `13`,
+            y: `3`,
+            width: `8`,
+            height: `8`,
+            rx: `1.6`,
+            fill: `#22c55e`,
+          }),
+          (0, f.jsx)(`rect`, {
+            x: `3`,
+            y: `13`,
+            width: `8`,
+            height: `8`,
+            rx: `1.6`,
+            fill: `#38bdf8`,
+          }),
+          (0, f.jsx)(`rect`, {
+            x: `13`,
+            y: `13`,
+            width: `8`,
+            height: `8`,
+            rx: `1.6`,
+            fill: `#f59e0b`,
+          }),
+        ],
+      })
+    : e === `Power Automate`
+      ? (0, f.jsxs)(`svg`, {
+          viewBox: `0 0 24 24`,
+          className: `tool-mark`,
+          "aria-hidden": !0,
+          children: [
+            (0, f.jsx)(`path`, {
+              d: `M4 12h7l3-5 6 10H4Z`,
+              fill: `#7c3aed`,
+              opacity: `0.95`,
+            }),
+            (0, f.jsx)(`path`, { d: `M8 12h6l-2.4 4H8V12Z`, fill: `#c4b5fd` }),
+          ],
+        })
+      : e === `Jira`
+        ? (0, f.jsxs)(`svg`, {
+            viewBox: `0 0 24 24`,
+            className: `tool-mark`,
+            "aria-hidden": !0,
+            children: [
+              (0, f.jsx)(`path`, {
+                d: `M12 4 5 11.2c1.9 1.9 5 1.9 6.9 0L18.8 4H12Z`,
+                fill: `#1868DB`,
+              }),
+              (0, f.jsx)(`path`, {
+                d: `M12 10.2 8.2 14c1.1 1.1 2.9 1.1 4 0L16 10.2h-4Z`,
+                fill: `#2684FF`,
+              }),
+              (0, f.jsx)(`path`, {
+                d: `M12 16.2 10.2 18c.5.5 1.4.5 1.9 0L14 16.2h-2Z`,
+                fill: `#0052CC`,
+              }),
+            ],
+          })
+        : e === `Claude`
+          ? (0, f.jsx)(`svg`, {
+              viewBox: `0 0 24 24`,
+              className: `tool-mark`,
+              "aria-hidden": !0,
+              children: (0, f.jsx)(`path`, {
+                d: `M12 3.2 13.4 8l4.8.2-3.8 3 1.3 4.7L12 13.8 8.3 15.9 9.6 11.2 5.8 8.2 10.6 8 12 3.2Z`,
+                fill: `#D97757`,
+              }),
+            })
+          : e === `n8n`
+            ? (0, f.jsxs)(`svg`, {
+                viewBox: `0 0 24 24`,
+                className: `tool-mark`,
+                "aria-hidden": !0,
+                children: [
+                  (0, f.jsx)(`circle`, {
+                    cx: `6.2`,
+                    cy: `12`,
+                    r: `2.6`,
+                    fill: `#EA4B71`,
+                  }),
+                  (0, f.jsx)(`circle`, {
+                    cx: `17.8`,
+                    cy: `7.2`,
+                    r: `2.4`,
+                    fill: `#EA4B71`,
+                  }),
+                  (0, f.jsx)(`circle`, {
+                    cx: `17.8`,
+                    cy: `16.8`,
+                    r: `2.4`,
+                    fill: `#EA4B71`,
+                  }),
+                  (0, f.jsx)(`path`, {
+                    d: `M8.6 11.2 15.4 8.2M8.6 12.8 15.4 15.8`,
+                    stroke: `#EA4B71`,
+                    strokeWidth: `1.8`,
+                    fill: `none`,
+                    strokeLinecap: `round`,
+                  }),
+                ],
+              })
+            : e === `Grok`
+              ? (0, f.jsxs)(`svg`, {
+                  viewBox: `0 0 24 24`,
+                  className: `tool-mark`,
+                  "aria-hidden": !0,
+                  children: [
+                    (0, f.jsx)(`path`, {
+                      d: `M12 3.2 13.2 9.2 19.2 8.4 14.4 12 19.2 15.6 13.2 14.8 12 20.8 10.8 14.8 4.8 15.6 9.6 12 4.8 8.4 10.8 9.2 12 3.2Z`,
+                      fill: `#E8EEF6`,
+                    }),
+                    (0, f.jsx)(`circle`, {
+                      cx: `12`,
+                      cy: `12`,
+                      r: `2.1`,
+                      fill: `#0b1220`,
+                    }),
+                  ],
+                })
+              : e === `IoT`
+                ? (0, f.jsxs)(`svg`, {
+                    viewBox: `0 0 24 24`,
+                    className: `tool-mark`,
+                    "aria-hidden": !0,
+                    children: [
+                      (0, f.jsx)(`rect`, {
+                        x: `8.2`,
+                        y: `9.4`,
+                        width: `7.6`,
+                        height: `7.6`,
+                        rx: `1.5`,
+                        fill: `none`,
+                        stroke: `#1fe6b4`,
+                        strokeWidth: `1.7`,
+                      }),
+                      (0, f.jsx)(`circle`, {
+                        cx: `12`,
+                        cy: `13.2`,
+                        r: `1.2`,
+                        fill: `#1fe6b4`,
+                      }),
+                      (0, f.jsx)(`path`, {
+                        d: `M9.2 8.2c1.6-1.5 4-1.5 5.6 0M10.4 7c1-.9 2.2-.9 3.2 0`,
+                        fill: `none`,
+                        stroke: `#1fe6b4`,
+                        strokeWidth: `1.5`,
+                        strokeLinecap: `round`,
+                      }),
+                      (0, f.jsx)(`path`, {
+                        d: `M10.2 17h3.6`,
+                        stroke: `#1fe6b4`,
+                        strokeWidth: `1.6`,
+                        strokeLinecap: `round`,
+                      }),
+                    ],
+                  })
+                : e === `HeyGen`
+                  ? (0, f.jsxs)(`svg`, {
+                      viewBox: `0 0 24 24`,
+                      className: `tool-mark`,
+                      "aria-hidden": !0,
+                      children: [
+                        (0, f.jsx)(`rect`, {
+                          x: `4`,
+                          y: `4`,
+                          width: `16`,
+                          height: `16`,
+                          rx: `5`,
+                          fill: `#6C47FF`,
+                        }),
+                        (0, f.jsx)(`circle`, {
+                          cx: `12`,
+                          cy: `10.2`,
+                          r: `2.3`,
+                          fill: `#F4F1FF`,
+                        }),
+                        (0, f.jsx)(`path`, {
+                          d: `M7.8 17c.7-2.2 2.2-3.3 4.2-3.3s3.5 1.1 4.2 3.3`,
+                          fill: `#F4F1FF`,
+                        }),
+                      ],
+                    })
+                  : e === `Lovable`
+                    ? (0, f.jsx)(`svg`, {
+                        viewBox: `0 0 24 24`,
+                        className: `tool-mark`,
+                        "aria-hidden": !0,
+                        children: (0, f.jsx)(`path`, {
+                          d: `M12 19.2S5.2 14.2 5.2 9.8A3.8 3.8 0 0 1 12 8.2 3.8 3.8 0 0 1 18.8 9.8C18.8 14.2 12 19.2 12 19.2Z`,
+                          fill: `#FF6B4A`,
+                        }),
+                      })
+                    : e === `Snowflake`
+                      ? (0, f.jsx)(`svg`, {
+                          viewBox: `0 0 24 24`,
+                          className: `tool-mark`,
+                          "aria-hidden": !0,
+                          children: (0, f.jsxs)(`g`, {
+                            stroke: `#29B5E8`,
+                            strokeWidth: `1.7`,
+                            strokeLinecap: `round`,
+                            fill: `none`,
+                            children: [
+                              (0, f.jsx)(`path`, {
+                                d: `M12 4v16M5.2 8l13.6 8M5.2 16 18.8 8`,
+                              }),
+                              (0, f.jsx)(`path`, {
+                                d: `M12 7.2 10.2 5.8M12 7.2 13.8 5.8M12 16.8 10.2 18.2M12 16.8 13.8 18.2`,
+                              }),
+                              (0, f.jsx)(`path`, {
+                                d: `M7.2 9.1 5.6 9.8M7.2 9.1 7.4 7.1M16.8 14.9 18.4 14.2M16.8 14.9 16.6 16.9`,
+                              }),
+                              (0, f.jsx)(`path`, {
+                                d: `M7.2 14.9 5.6 14.2M7.2 14.9 7.4 16.9M16.8 9.1 18.4 9.8M16.8 9.1 16.6 7.1`,
+                              }),
+                            ],
+                          }),
+                        })
+                      : e === `Gemini NotebookLM`
+                        ? (0, f.jsxs)(`svg`, {
+                            viewBox: `0 0 24 24`,
+                            className: `tool-mark`,
+                            "aria-hidden": !0,
+                            children: [
+                              (0, f.jsx)(`defs`, {
+                                children: (0, f.jsxs)(`linearGradient`, {
+                                  id: `gemini-spark`,
+                                  x1: `5`,
+                                  y1: `4`,
+                                  x2: `19`,
+                                  y2: `20`,
+                                  gradientUnits: `userSpaceOnUse`,
+                                  children: [
+                                    (0, f.jsx)(`stop`, {
+                                      stopColor: `#1A73E8`,
+                                    }),
+                                    (0, f.jsx)(`stop`, {
+                                      offset: `0.45`,
+                                      stopColor: `#9334E6`,
+                                    }),
+                                    (0, f.jsx)(`stop`, {
+                                      offset: `1`,
+                                      stopColor: `#F53868`,
+                                    }),
+                                  ],
+                                }),
+                              }),
+                              (0, f.jsx)(`path`, {
+                                d: `M12 3.2 13.7 10.3 20.8 12 13.7 13.7 12 20.8 10.3 13.7 3.2 12 10.3 10.3 12 3.2Z`,
+                                fill: `url(#gemini-spark)`,
+                              }),
+                            ],
+                          })
+                        : e === `Hermes`
+                          ? (0, f.jsxs)(`svg`, {
+                              viewBox: `0 0 24 24`,
+                              className: `tool-mark`,
+                              "aria-hidden": !0,
+                              children: [
+                                (0, f.jsx)(`path`, {
+                                  d: `M12 4.2c2.4 0 4.4 1.7 5.2 4.1-1.5-.6-3.3-.9-5.2-.9s-3.7.3-5.2.9C7.6 5.9 9.6 4.2 12 4.2Z`,
+                                  fill: `#E2B54A`,
+                                }),
+                                (0, f.jsx)(`path`, {
+                                  d: `M7.2 8.6c-2-.9-3.8-.4-4.6 1.4 1.6-.1 3 .5 4.2 1.6M16.8 8.6c2-.9 3.8-.4 4.6 1.4-1.6-.1-3 .5-4.2 1.6`,
+                                  fill: `none`,
+                                  stroke: `#E2B54A`,
+                                  strokeWidth: `1.6`,
+                                  strokeLinecap: `round`,
+                                }),
+                                (0, f.jsx)(`path`, {
+                                  d: `M8.2 10.4h7.6v2.1c0 2.4-1.7 4.2-3.8 4.2s-3.8-1.8-3.8-4.2v-2.1Z`,
+                                  fill: `#C9962E`,
+                                }),
+                                (0, f.jsx)(`path`, {
+                                  d: `M12 16.6v3.4`,
+                                  stroke: `#E2B54A`,
+                                  strokeWidth: `1.7`,
+                                  strokeLinecap: `round`,
+                                }),
+                              ],
+                            })
+                          : e === `OpenClaw`
+                            ? (0, f.jsxs)(`svg`, {
+                                viewBox: `0 0 24 24`,
+                                className: `tool-mark`,
+                                "aria-hidden": !0,
+                                children: [
+                                  (0, f.jsx)(`path`, {
+                                    d: `M6.2 17.8c-1.6-1.4-2.4-3.8-1.6-6.2.9 1.2 2.2 2 3.6 2.2-.8-2.2-.2-4.6 1.6-6.2 1.2 2.6 1 5.4-.4 7.6 1.6-.3 3-.2 4.3.6-2.2 1.8-5.1 2.6-7.5 2Z`,
+                                    fill: `#F5654A`,
+                                  }),
+                                  (0, f.jsx)(`path`, {
+                                    d: `M17.8 17.8c1.6-1.4 2.4-3.8 1.6-6.2-.9 1.2-2.2 2-3.6 2.2.8-2.2.2-4.6-1.6-6.2-1.2 2.6-1 5.4.4 7.6-1.6-.3-3-.2-4.3.6 2.2 1.8 5.1 2.6 7.5 2Z`,
+                                    fill: `#FF7A62`,
+                                  }),
+                                ],
+                              })
+                            : (0, f.jsxs)(`svg`, {
+                                viewBox: `0 0 24 24`,
+                                className: `tool-mark`,
+                                "aria-hidden": !0,
+                                children: [
+                                  (0, f.jsx)(`path`, {
+                                    d: `M12.2 3.2c-2.2 0-3.5 1.1-4 2.4.8-.6 1.8-.8 2.8-.4.6.2 1 .7 1.3 1.3.5 1.1.1 2.2-.7 2.9l-3.2 2.3c-1.7 1.2-2.3 3.3-1.5 5 .8 1.7 2.8 2.6 4.7 2.1`,
+                                    fill: `#3673a5`,
+                                  }),
+                                  (0, f.jsx)(`path`, {
+                                    d: `M11.8 20.8c2.2 0 3.5-1.1 4-2.4-.8.6-1.8.8-2.8.4-.6-.2-1-.7-1.3-1.3-.5-1.1-.1-2.2.7-2.9l3.2-2.3c1.7-1.2 2.3-3.3 1.5-5-.8-1.7-2.8-2.6-4.7-2.1`,
+                                    fill: `#ffd43b`,
+                                  }),
+                                ],
+                              });
+}
+var S = [
+  { href: `#inicio`, id: `inicio`, label: `Início` },
+  { href: `#projetos`, id: `projetos`, label: `Projetos` },
+  { href: `#trajetoria`, id: `trajetoria`, label: `Trajetória` },
+  { href: `#contato`, id: `contato`, label: `Contato` },
 ];
-
-const EXPERIENCE_RECENT = [
-  {
-    period: 'jul 2025 — atual',
-    role: 'Especialista de Inovação',
-    org: 'Iguatemi S.A.',
-    tags: ['Inovação', 'Agentes de IA', 'Governança'],
-    bullets: [
-      'Liderança do squad de Inovação e IA (5 pessoas) e integração ao Comitê de IA.',
-      'Adoção de agentes de IA em produção, com redução de trabalho repetitivo e ganhos de eficiência operacional.',
-      'Agente de Contratos do Shopping em Copilot Studio e Microsoft Teams, com dados do Salesforce e do BigQuery.',
-      'Gestão de custos e licenças de IA, definição de KPIs e roadmap, e formação dos Champions de IA.',
+function ae() {
+  let [e, t] = (0, l.useState)(!1),
+    [n, r] = (0, l.useState)(`inicio`);
+  return (
+    (0, l.useEffect)(() => {
+      let e = S.map((e) => e.id)
+          .map((e) => document.getElementById(e))
+          .filter((e) => !!e),
+        t = new IntersectionObserver(
+          (e) => {
+            let t = e
+              .filter((e) => e.isIntersecting)
+              .sort((e, t) => t.intersectionRatio - e.intersectionRatio)[0];
+            t?.target.id && r(t.target.id);
+          },
+          { rootMargin: `-30% 0px -55% 0px`, threshold: [0.1, 0.25, 0.5] },
+        );
+      e.forEach((e) => t.observe(e));
+      return () => t.disconnect();
+    }, []),
+    (0, l.useEffect)(() => {
+      document.body.style.overflow = e ? `hidden` : ``;
+      return () => {
+        document.body.style.overflow = ``;
+      };
+    }, [e]),
+    (0, f.jsxs)(f.Fragment, {
+      children: [
+        (0, f.jsx)(`header`, {
+          className: `site-header${e ? ` is-open` : ``}`,
+          children: (0, f.jsxs)(`div`, {
+            className: `header-inner`,
+            children: [
+              (0, f.jsx)(`a`, {
+                className: `logo`,
+                href: `#inicio`,
+                "aria-label": `Diego Arruda, ir ao início`,
+                children: `Diego Arruda`,
+              }),
+              (0, f.jsx)(`nav`, {
+                className: `nav-desktop`,
+                "aria-label": `Seções`,
+                children: S.map((e) =>
+                  (0, f.jsx)(
+                    `a`,
+                    {
+                      href: e.href,
+                      className: n === e.id ? `is-active` : ``,
+                      children: e.label,
+                    },
+                    e.id,
+                  ),
+                ),
+              }),
+              (0, f.jsxs)(`button`, {
+                type: `button`,
+                className: `nav-toggle`,
+                "aria-expanded": e,
+                "aria-controls": `menu-mobile`,
+                onClick: () => t((e) => !e),
+                children: [
+                  e ? (0, f.jsx)(ne, {}) : (0, f.jsx)(te, {}),
+                  (0, f.jsx)(`span`, {
+                    className: `sr-only`,
+                    children: e ? `Fechar menu` : `Abrir menu`,
+                  }),
+                ],
+              }),
+            ],
+          }),
+        }),
+        (0, f.jsx)(`div`, {
+          id: `menu-mobile`,
+          className: `nav-mobile${e ? ` is-open` : ``}`,
+          hidden: !e,
+          children: (0, f.jsx)(`nav`, {
+            "aria-label": `Seções`,
+            children: S.map((e) =>
+              (0, f.jsx)(
+                `a`,
+                {
+                  href: e.href,
+                  className: n === e.id ? `is-active` : ``,
+                  onClick: () => t(!1),
+                  children: e.label,
+                },
+                e.id,
+              ),
+            ),
+          }),
+        }),
+      ],
+    })
+  );
+}
+var oe = {
+    name: `Diego Arruda`,
+    rolePrefix: `Especialista de `,
+    roleHighlight: `Inovação e IA`,
+    company: `Iguatemi S.A.`,
+    kicker: `Portfólio`,
+    tagline: `Transformando processos em agentes de IA que geram resultado.`,
+    location: `Osasco-SP`,
+    stats: [
+      { value: `26`, label: `agentes de IA em produção` },
+      { value: `5.100+`, label: `horas economizadas` },
+      { value: `R$ 265 mil+`, label: `em economia` },
+    ],
+    tools: [
+      `Copilot Studio`,
+      `Power Automate`,
+      `Jira`,
+      `Claude`,
+      `n8n`,
+      `Grok`,
+      `IoT`,
+      `HeyGen`,
+      `Lovable`,
+      `Snowflake`,
+      `Gemini NotebookLM`,
+      `Hermes`,
+      `OpenClaw`,
+    ],
+    skills: [
+      `Copilot Studio`,
+      `Power Automate`,
+      `RPA`,
+      `chatbots`,
+      `agentes de IA`,
+      `Jira`,
+      `Claude`,
+      `BigQuery`,
+      `Python`,
     ],
   },
-  {
-    period: 'jan 2024 — jun 2025',
-    role: 'Especialista de Soluções TI',
-    org: 'Iguatemi S.A.',
-    tags: ['RPA', 'Chatbots', 'Portal do Lojista'],
-    bullets: [
-      'Automação de processos com RPA e chatbots para a operação dos shoppings.',
-      'Gestão do Portal do Lojista, de fornecedores e de contratos.',
-    ],
-  },
-  {
-    period: 'abr 2022 — dez 2023',
-    role: 'Analista de Sistemas Sênior',
-    org: 'Strattner',
-    tags: ['Soluções Digitais', 'IA em Saúde', 'Product Owner'],
-    bullets: [
-      'Liderança na criação do Departamento de Soluções Digitais.',
-      'IA para detecção precoce de câncer em exames.',
-      'Atuação como Product Owner; projeto premiado HUB AI, Assistant Healthcare e Telementoring.',
-    ],
-  },
-  {
-    period: 'ago 2017 — mar 2022',
-    role: 'Analista de Sistemas Pleno',
-    org: 'Strattner',
-    tags: ['Product Owner', 'IoT', 'Saúde'],
-    bullets: [
-      'Product Owner em produtos digitais e em iniciativas de IoT para a saúde.',
-      'Projetos premiados S.Connect e Atendimento 24/7 (chatbot).',
-    ],
-  },
-];
-
-const EXPERIENCE_EARLIER = [
-  {
-    id: 'earlier-2016',
-    period: '2016 — 2017',
-    text: 'Simpress (fev/2016 a ago/2017) — indicadores de segurança da informação, com DLP e Endpoint Symantec.',
-  },
-  {
-    id: 'earlier-2009',
-    period: '2009 — 2015',
-    text: 'Iguatemi (dez/2009 a set/2015) — Analista de Sistemas e líder de TI nas inaugurações dos shoppings Ribeirão Preto, São José do Rio Preto e Esplanada.',
-  },
-];
-
-const EDUCATION = [
-  {
-    period: 'em curso',
-    course: 'MBA em Inteligência Artificial',
-    school: 'FIAP · conclusão prevista em out/2027',
-  },
-  { period: '2023', course: 'MBA em Transformação Digital', school: 'Universidade Presbiteriana Mackenzie' },
-  { period: '2018', course: 'MBA em Gestão de Cibersegurança', school: 'FIAP' },
-  { period: '2016', course: 'Tecnologia em Redes de Computadores', school: 'Centro Universitário FIEO' },
-];
-
-const CERTIFICATIONS = [
-  'CSPO (2020)',
-  'Green Belt Lean Six Sigma',
-  'Digital Products Hero (FIAP, 2022)',
-];
-
-const AWARDS = [
-  '1º lugar — HUB AI, Assistant Healthcare e Telementoring (2023)',
-  '1º lugar — Atendimento 24/7 (2021)',
-  '1º lugar — Smart Connect (2020)',
-  'Destaque em Gestão de Processos e Atingimento de Metas (2020)',
-];
-
-const SKILLS = {
-  'IA & Agentes': [
-    'IA generativa',
-    'LLMs',
-    'Agentes e multiagentes',
-    'Engenharia de prompt',
-    'Governança de IA',
+  se = [
+    { id: `agentes`, label: `Agentes de IA`, icon: `shield`, angle: 288 },
+    { id: `rpa`, label: `Automação RPA`, icon: `database`, angle: 0 },
+    { id: `copilot`, label: `Copilot Studio`, icon: `chart`, angle: 72 },
+    { id: `comite`, label: `Comitê de IA`, icon: `gear`, angle: 216 },
+    { id: `squad`, label: `Squad de Inovação`, icon: `people`, angle: 144 },
   ],
-  'Automação & Dados': ['RPA', 'Power Automate', 'n8n', 'BigQuery', 'Snowflake', 'Databricks', 'Power BI'],
-  'Plataformas & Métodos': ['Copilot Studio', 'M365 Copilot', 'Azure AI', 'GCP', 'APIs', 'Agile/Scrum', 'PMI'],
-};
-
-const WHATSAPP_MESSAGE = 'Olá Diego, vim pelo seu portfólio e gostaria de um diagnóstico.';
-const WHATSAPP_URL = `https://wa.me/5511982661567?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
-
-const SERVICES = [
-  {
-    title: 'Site e presença digital rápida',
-    problem: 'A empresa existe, mas quem chega pela internet não entende o que ela faz nem como dar o próximo passo.',
-    deadline: '1 a 2 semanas',
-  },
-  {
-    title: 'Automação de rotinas',
-    problem: 'O time repete cópia de dados, avisos e conferências que uma rotina poderia assumir.',
-    deadline: '2 a 4 semanas',
-  },
-  {
-    title: 'Atendente de IA',
-    problem: 'As mesmas perguntas, no WhatsApp ou no site, ocupam quem deveria cuidar do que é novo.',
-    deadline: '2 a 4 semanas',
-  },
-  {
-    title: 'Sistema sob medida enxuto',
-    problem: 'A operação não cabe numa planilha nem num sistema genérico, e um projeto longo não cabe agora.',
-    deadline: '4 a 8 semanas',
-  },
-  {
-    title: 'Consultoria e diagnóstico',
-    problem: 'Há várias ideias na mesa e falta clareza sobre o que fazer primeiro.',
-    deadline: 'cerca de 1 semana',
-  },
-  {
-    title: 'Manutenção mensal',
-    problem: 'O que já foi entregue precisa de ajuste, acompanhamento e pequenas evoluções todo mês.',
-    deadline: 'ciclo mensal',
-  },
-];
-
-const CASE_INOVALAB = {
-  name: 'InovaLab',
-  href: 'https://inovalab3d.vercel.app/',
-  summary:
-    'Estúdio de impressão 3D que precisava mostrar as peças, receber pedidos e conversar sobre o que ainda não está no catálogo.',
-  before:
-    'Quem não conhecia o trabalho dependia de já saber o que pedir. Não havia uma vitrine com as peças, as cores e o caminho do pedido.',
-  after:
-    'O site apresenta os produtos, explica como pedir pelo WhatsApp e deixa claro que uma ideia fora do catálogo também pode virar peça.',
-};
-
-const PROJECTS = [
-  {
-    title: 'Agente Executivo',
-    desc: 'Agente construído em Microsoft Copilot Studio para apoiar a liderança (incluindo CEO) com priorização, contexto e follow-ups de tarefas do dia a dia.',
-    tags: ['Copilot Studio', 'Governança de IA'],
-  },
-  {
-    title: 'Resolver Plano e Bucket',
-    desc: 'Fluxo em Power Automate integrado à API da Anthropic para classificar automaticamente tarefas do Planner em plano/bucket com roteamento por confiança.',
-    tags: ['Power Automate', 'Claude API', 'SharePoint'],
-  },
-  {
-    title: 'Iguatemi AI Hub',
-    desc: 'Portal interno multi-LLM com SSO via Azure Entra ID, controle de cotas por usuário e camada de governança para gestão de agentes de IA.',
-    tags: ['React', 'Azure Entra ID', 'Governança'],
-  },
-  {
-    title: 'Agente de Contratos do Shopping',
-    desc: 'Agente em Copilot Studio e Microsoft Teams para apoio a contratos, com dados do Salesforce e do BigQuery.',
-    tags: ['Copilot Studio', 'Microsoft Teams', 'BigQuery'],
-  },
-  {
-    title: 'Agente de Comunicados Corporativos',
-    desc: 'Agente em Copilot Studio para geração de comunicados internos, com sugestão de texto, fluxo de aprovação e workflow de publicação para toda a empresa.',
-    tags: ['Copilot Studio', 'Power Automate', 'Workflow'],
-  },
-  {
-    title: 'Assistente Remoto Hospitalar (IoT)',
-    desc: 'Assistente remoto para gestão e controle à distância de equipamentos hospitalares, usando ESP32/Arduino como camada IoT e Oracle APEX para gestão.',
-    tags: ['IoT', 'ESP32 & Arduino', 'Oracle APEX'],
-  },
-];
-
-/* ---------------------------------------------------------
-   Hook simples de reveal-on-scroll
---------------------------------------------------------- */
-function useReveal() {
-  const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return undefined;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.unobserve(el);
-        }
-      },
-      { threshold: 0.15 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  return [ref, visible];
-}
-
-function Reveal({ as: Tag = 'div', className = '', children, delay = 0 }) {
-  const [ref, visible] = useReveal();
-  return (
-    <Tag
-      ref={ref}
-      className={`reveal ${visible ? 'is-visible' : ''} ${className}`}
-      style={{ transitionDelay: `${delay}ms` }}
-    >
-      {children}
-    </Tag>
-  );
-}
-
-/* ---------------------------------------------------------
-   Grafo de rede — assinatura visual da hero
-   Representa a progressão de carreira de Diego: de sistemas e
-   segurança da informação até inovação e governança de IA.
---------------------------------------------------------- */
-function CareerGraph() {
-  return (
-    <div className="graph-wrap">
-      <svg viewBox="0 0 1050 300" className="graph-svg" preserveAspectRatio="xMidYMid meet">
-        <polyline
-          className="graph-line"
-          points={NETWORK_NODES.map((n) => `${n.x},${n.y}`).join(' ')}
-          fill="none"
-        />
-        {NETWORK_NODES.map((n, i) => {
-          const above = i % 2 === 0;
-          const yearY = n.y + (above ? -36 : 30);
-          const labelStartY = n.y + (above ? -21 : 46);
-          const anchor = n.anchor || 'middle';
-          return (
-            <a
-              key={n.year}
-              href={`#${n.target}`}
-              className="graph-node-link"
-              aria-label={`Ir para: ${n.label.join(' ')} (${n.year})`}
-            >
-              <g style={{ transitionDelay: `${i * 120}ms` }}>
-                <circle
-                  cx={n.x}
-                  cy={n.y}
-                  r={n.current ? 8 : 5}
-                  className={`graph-node ${n.current ? 'graph-node--current' : ''}`}
-                  style={{ transitionDelay: `${i * 120}ms` }}
-                />
-                <circle cx={n.x} cy={n.y} r={16} className="graph-node-hit" />
-                <text x={n.x} y={yearY} textAnchor={anchor} className="graph-year">
-                  {n.year}
-                </text>
-                {n.label.map((line, li) => (
-                  <text
-                    key={line}
-                    x={n.x}
-                    y={labelStartY + li * 14}
-                    textAnchor={anchor}
-                    className="graph-label"
-                  >
-                    {line}
-                  </text>
-                ))}
-              </g>
-            </a>
-          );
-        })}
-      </svg>
-    </div>
-  );
-}
-
-/* --------------------------------------------------------- */
-
-function Nav({ view }) {
-  const [open, setOpen] = useState(false);
-  const links = [
-    ['Início', '#inicio', 'home'],
-    ['Meu perfil', '#perfil', 'perfil'],
-    ['Serviços', '#servicos', 'servicos'],
+  ce = [
+    {
+      name: `HUB de IA`,
+      context: `Iguatemi S.A.`,
+      description: `Plataforma que centraliza agentes, ferramentas e artefatos de IA da empresa e também funciona como repositório de iniciativas, usando IA para avaliar sinergias entre projetos e ranquear a priorização.`,
+    },
+    {
+      name: `Agentes de IA`,
+      context: `Iguatemi S.A.`,
+      description: `Soluções em produção para Jurídico, Comercial, RH, Comunicação, Marketing e Operações, com Claude, Copilot Studio, Salesforce e Snowflake. São 26 agentes em produção.`,
+    },
+    {
+      name: `Automação RPA e chatbots`,
+      context: `Iguatemi S.A.`,
+      description: `Projetos de RPA e chatbots, com equipes terceirizadas e ferramentas de workflow.`,
+    },
+  ],
+  le = [
+    {
+      name: `Autoescola Ellus`,
+      href: `https://ellus-prototipo.vercel.app`,
+      description: `Protótipo de site para a CFC Ellus, autoescola de Carapicuíba, feito como demonstração com dados de exemplo. Traz um hero com vídeo em loop de um personagem 3D dirigindo o carro da marca, simulador de pacotes por categoria (A, B, A+B, D, E, adição e reciclagem) de 5 em 5 aulas, agendamento de aula prática em cinco passos — tipo de aula, instrutor, dia, horário e dados — com código de reserva e opção de cancelar ou remarcar, simulado da prova teórica do DETRAN com correção e explicações por tema, e carrossel da frota com carros, micro-ônibus e caminhão. O site é responsivo e acessível, em HTML, CSS e JavaScript puro, com localStorage, publicação na Vercel e mídia de imagem e vídeo gerada por IA. É um protótipo em demonstração.`,
+    },
+    {
+      name: `LearnUp`,
+      href: `https://learnupapp.vercel.app`,
+      description: `Plataforma pessoal de aprendizagem.`,
+    },
+    {
+      name: `InovaLab 3D`,
+      href: `https://inovalab3d.vercel.app`,
+      description: `Catálogo de peças em impressão 3D.`,
+    },
+  ],
+  ue = [
+    {
+      company: `Iguatemi S.A.`,
+      role: `Especialista de Inovação e Soluções TI`,
+      period: `jan/2024 – atual`,
+      text: `Lidera o squad de Inovação & IA (5 pessoas), integra o Comitê de IA e criou o HUB de IA, com 26 agentes de IA em produção, 5.100+ horas economizadas e R$ 265 mil+ de economia em 2026.`,
+      details: [
+        `Lidera o squad de Inovação & IA (5 pessoas) e participa do Comitê de IA, definindo estratégia, governança e priorização das iniciativas de IA em toda a companhia.`,
+        `Criou o HUB de IA, plataforma que centraliza agentes, ferramentas e artefatos de IA da empresa e também funciona como repositório de iniciativas, usando IA para avaliar sinergias entre projetos e ranquear a priorização.`,
+        `Agentes de IA em produção para Jurídico, Comercial, RH, Comunicação, Marketing e Operações, com Claude, Copilot Studio, Teams, Salesforce e Snowflake.`,
+        `Resultados em 2026: 5.100+ horas de trabalho repetitivo economizadas e R$ 265 mil+ de economia, combinando agentes desenvolvidos internamente e soluções de mercado incorporadas.`,
+        `Estrutura a esteira de inovação (ideia → POC → MVP → produção), com testes, integração, medição de impacto, KPIs e roadmap; analisa soluções de mercado e atua em pesquisa e desenvolvimento de novas tecnologias e casos de uso de IA.`,
+        `Gestão de orçamento (CAPEX/OPEX), licenciamento de IA e tecnologia, contratos e fornecedores; define boas práticas de uso corporativo de IA; treina em Inovação, Claude e Microsoft Copilot e capacita os AI Champions; atua como jurado do Prêmio Inovação; conduz projetos de RPA e chatbots.`,
+      ],
+    },
+    {
+      company: `Strattner`,
+      role: `Analista de Sistemas Sênior`,
+      period: `abr/2022 – dez/2023`,
+      text: `Na saúde, liderou a criação do Departamento de Soluções Digitais e de soluções de IA e IoT.`,
+      details: [
+        `Liderou a criação do Departamento de Soluções Digitais, impulsionando inovação e transformação digital na saúde.`,
+        `Desenvolveu e implementou IA para detecção precoce de câncer.`,
+        `Responsável pelas soluções de IoT, com dispositivos que permitiam identificar de forma preditiva a necessidade de manutenção de equipamentos hospitalares.`,
+        `Product Owner de produtos digitais, da concepção ao lançamento, com times de desenvolvimento, design, marketing e vendas.`,
+      ],
+    },
+    {
+      company: `Strattner`,
+      role: `Analista de Sistemas Pleno`,
+      period: `ago/2017 – mar/2022`,
+      text: `Product Owner de produtos internos e externos, com projetos campeões de inovação.`,
+      details: [
+        `Product Owner de produtos internos e externos, com participação em IoT em saúde, LMS, Contratos, Assistência técnica, BPMS e conexão remota para medical device.`,
+        `Projetos campeões de inovação: S.Connect (redução de despesas operacionais de atendimento técnico) e Atendimento 24/7 (chatbot).`,
+      ],
+    },
+    {
+      company: `Simpress`,
+      role: `Analista de Suporte`,
+      period: `fev/2016 – ago/2017`,
+      text: `Analista de Suporte na Simpress, subsidiária da Samsung Electronics.`,
+      details: [
+        `Analista de Suporte na Simpress, subsidiária da Samsung Electronics, de fev/2016 a ago/2017.`,
+        `Indicadores de Segurança da Informação; administração de DLP e Endpoint Symantec; gestão de ativos (Lansweeper, WSUS) e Active Directory.`,
+      ],
+    },
+    {
+      company: `Iguatemi Empresa de Shopping Center`,
+      role: `Analista de Sistemas`,
+      period: `dez/2009 – set/2015`,
+      text: `Líder de projetos de TI na implantação de shoppings da Iguatemi e de infraestrutura de grande porte.`,
+      details: [
+        `Analista de Sistemas na Iguatemi Empresa de Shopping Center, de dez/2009 a set/2015.`,
+        `Líder de projetos de TI na implantação dos shoppings Iguatemi Ribeirão Preto, São José do Rio Preto e Esplanada.`,
+        `Infraestrutura de grande porte: redes, telefonia, controle de acesso e automação.`,
+      ],
+    },
+  ],
+  de = [
+    {
+      title: `MBA em Inteligência Artificial`,
+      org: `FIAP`,
+      detail: `Previsão out/2027`,
+    },
+    { title: `MBA em Transformação Digital`, org: `Mackenzie`, detail: `2023` },
+    { title: `MBA em Gestão de Cibersegurança`, org: `FIAP`, detail: `2018` },
+    {
+      title: `Tecnologia em Redes de Computadores`,
+      org: `FIEO`,
+      detail: `2016`,
+    },
+  ],
+  fe = [
+    { title: `AI for Business`, org: `Inteli`, detail: `jan/2026` },
+    { title: `CSPO — Certified Scrum Product Owner`, org: ``, detail: `2020` },
+    { title: `Green Belt — Lean Six Sigma`, org: ``, detail: `` },
+    { title: `Digital Products Hero`, org: `FIAP`, detail: `2022` },
   ];
+function pe() {
+  let [e, t] = (0, l.useState)(!1);
   return (
-    <header className="nav">
-      <div className="nav-inner">
-        <a href="#inicio" className="nav-name">
-          Diego Arruda
-        </a>
-        <nav className={`nav-links ${open ? 'nav-links--open' : ''}`}>
-          {links.map(([label, href, key]) => (
-            <a
-              key={href}
-              href={href}
-              className={view === key ? 'is-active' : undefined}
-              aria-current={view === key ? 'page' : undefined}
-              onClick={() => setOpen(false)}
-            >
-              {label}
-            </a>
-          ))}
-        </nav>
-        <button
-          className="nav-toggle"
-          aria-label={open ? 'Fechar menu' : 'Abrir menu'}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-        >
-          <span />
-          <span />
-          <span />
-        </button>
-      </div>
-    </header>
+    (0, l.useEffect)(() => {
+      let e = window.matchMedia(`(prefers-reduced-motion: reduce)`),
+        n = () => t(e.matches);
+      return (
+        n(),
+        e.addEventListener(`change`, n),
+        () => e.removeEventListener(`change`, n)
+      );
+    }, []),
+    e
   );
 }
-
-function Home() {
-  return (
-    <section id="inicio" className="hero">
-      <div className="hero-top">
-        <div className="hero-copy">
-          <p className="eyebrow">Tecnologia e consultoria</p>
-          <h1 className="hero-name">{PROFILE.name}</h1>
-          <p className="hero-role">{PROFILE.role}</p>
-          <p className="hero-tagline">{PROFILE.tagline}</p>
-        </div>
-        <div className="hero-photo-wrap">
-          <img src="/diego-arruda.jpg" alt="Diego Arruda" className="hero-photo" />
-        </div>
-      </div>
-      <div className="doors">
-        <a className="door" href="#trajetoria">
-          <p className="eyebrow">Perfil</p>
-          <h2>Meu perfil</h2>
-          <p>A trajetória em tecnologia, a formação e os projetos — numa linha do tempo própria.</p>
-          <span className="door-go">Ver a trajetória</span>
-        </a>
-        <a className="door" href="#servicos">
-          <p className="eyebrow">Empresas</p>
-          <h2>Serviços para empresas</h2>
-          <p>Pacotes para pequenas e médias empresas, com o problema, o prazo típico e o valor sob consulta.</p>
-          <span className="door-go">Ver os pacotes</span>
-        </a>
-      </div>
-    </section>
-  );
+function me() {
+  return (0, f.jsxs)(`svg`, {
+    className: `hub-core-svg`,
+    viewBox: `0 0 200 200`,
+    role: `img`,
+    "aria-label": `HUB de IA`,
+    children: [
+      (0, f.jsxs)(`defs`, {
+        children: [
+          (0, f.jsxs)(`radialGradient`, {
+            id: `hubGlow`,
+            cx: `50%`,
+            cy: `46%`,
+            r: `55%`,
+            children: [
+              (0, f.jsx)(`stop`, {
+                offset: `0%`,
+                stopColor: `#1fe6b4`,
+                stopOpacity: `0.85`,
+              }),
+              (0, f.jsx)(`stop`, {
+                offset: `45%`,
+                stopColor: `#1a7cff`,
+                stopOpacity: `0.4`,
+              }),
+              (0, f.jsx)(`stop`, {
+                offset: `100%`,
+                stopColor: `#040b12`,
+                stopOpacity: `0`,
+              }),
+            ],
+          }),
+          (0, f.jsxs)(`linearGradient`, {
+            id: `hubRing`,
+            x1: `0`,
+            y1: `0`,
+            x2: `1`,
+            y2: `1`,
+            children: [
+              (0, f.jsx)(`stop`, { offset: `0%`, stopColor: `#1fe6b4` }),
+              (0, f.jsx)(`stop`, { offset: `50%`, stopColor: `#3cf0ff` }),
+              (0, f.jsx)(`stop`, { offset: `100%`, stopColor: `#8b5cf6` }),
+            ],
+          }),
+        ],
+      }),
+      (0, f.jsx)(`circle`, {
+        cx: `100`,
+        cy: `100`,
+        r: `78`,
+        fill: `url(#hubGlow)`,
+      }),
+      (0, f.jsx)(`circle`, {
+        className: `hub-ring hub-ring-a`,
+        cx: `100`,
+        cy: `100`,
+        r: `62`,
+        fill: `none`,
+        stroke: `url(#hubRing)`,
+        strokeWidth: `1.2`,
+        strokeDasharray: `8 10`,
+        opacity: `0.85`,
+      }),
+      (0, f.jsx)(`circle`, {
+        className: `hub-ring hub-ring-b`,
+        cx: `100`,
+        cy: `100`,
+        r: `48`,
+        fill: `none`,
+        stroke: `#1fe6b4`,
+        strokeWidth: `0.7`,
+        strokeDasharray: `3 8`,
+        opacity: `0.55`,
+      }),
+      Array.from({ length: 12 }, (e, t) => {
+        let n = (t / 12) * Math.PI * 2,
+          r = 28 + (t % 3) * 10;
+        return (0, f.jsx)(
+          `circle`,
+          {
+            cx: 100 + Math.cos(n) * r,
+            cy: 100 + Math.sin(n) * r,
+            r: t % 4 === 0 ? 2.4 : 1.5,
+            fill: t % 3 === 0 ? `#e7ffff` : `#1fe6b4`,
+            opacity: `0.9`,
+          },
+          t,
+        );
+      }),
+      Array.from({ length: 12 }, (e, t) => {
+        let n = (t / 12) * Math.PI * 2,
+          r = 36 + (t % 3) * 8;
+        return (0, f.jsx)(
+          `line`,
+          {
+            x1: 100 + Math.cos(n) * 22,
+            y1: 100 + Math.sin(n) * 22,
+            x2: 100 + Math.cos(n) * r,
+            y2: 100 + Math.sin(n) * r,
+            stroke: `#7dd3fc`,
+            strokeWidth: `0.6`,
+            opacity: `0.45`,
+          },
+          `l-${t}`,
+        );
+      }),
+    ],
+  });
 }
-
-function Sobre() {
-  return (
-    <section id="perfil" className="section">
-      <Reveal as="div" className="section-inner section-inner--narrow">
-        <p className="section-eyebrow">01 — Sobre</p>
-        <p className="lead">{PROFILE.summary}</p>
-      </Reveal>
-    </section>
-  );
+function he({ reduced: e }) {
+  let t = `M50 14 A36 36 0 1 1 49.99 14`;
+  return (0, f.jsxs)(`svg`, {
+    className: `hub-links`,
+    viewBox: `0 0 100 100`,
+    "aria-hidden": !0,
+    children: [
+      (0, f.jsx)(`defs`, {
+        children: (0, f.jsxs)(`linearGradient`, {
+          id: `flow`,
+          x1: `0`,
+          y1: `0`,
+          x2: `1`,
+          y2: `1`,
+          children: [
+            (0, f.jsx)(`stop`, {
+              offset: `0%`,
+              stopColor: `#1fe6b4`,
+              stopOpacity: `0.15`,
+            }),
+            (0, f.jsx)(`stop`, {
+              offset: `50%`,
+              stopColor: `#1fe6b4`,
+              stopOpacity: `1`,
+            }),
+            (0, f.jsx)(`stop`, {
+              offset: `100%`,
+              stopColor: `#8b5cf6`,
+              stopOpacity: `0.2`,
+            }),
+          ],
+        }),
+      }),
+      se.map((e) => {
+        let t = (e.angle * Math.PI) / 180,
+          n = 50 + Math.sin(t) * 36,
+          r = 50 - Math.cos(t) * 36,
+          i = 50 + Math.sin(t + 0.35) * 18,
+          a = 50 - Math.cos(t + 0.35) * 18;
+        return (0, f.jsx)(
+          `path`,
+          {
+            className: `hub-flow`,
+            d: `M50 50 Q ${i} ${a} ${n} ${r}`,
+            fill: `none`,
+            stroke: `url(#flow)`,
+            strokeWidth: `0.7`,
+          },
+          e.id,
+        );
+      }),
+      (0, f.jsx)(`circle`, {
+        className: `hub-orbit-ring`,
+        cx: `50`,
+        cy: `50`,
+        r: `36`,
+        fill: `none`,
+      }),
+      e
+        ? null
+        : (0, f.jsxs)(f.Fragment, {
+            children: [
+              (0, f.jsx)(`circle`, {
+                r: `1.4`,
+                fill: `#1fe6b4`,
+                children: (0, f.jsx)(`animateMotion`, {
+                  dur: `11s`,
+                  repeatCount: `indefinite`,
+                  path: t,
+                }),
+              }),
+              (0, f.jsx)(`circle`, {
+                r: `1.1`,
+                fill: `#8b5cf6`,
+                children: (0, f.jsx)(`animateMotion`, {
+                  dur: `17s`,
+                  repeatCount: `indefinite`,
+                  path: t,
+                }),
+              }),
+            ],
+          }),
+    ],
+  });
 }
-
-function Trajetoria() {
-  return (
-    <section id="trajetoria" className="section">
-      <div className="section-inner">
-        <Reveal>
-          <p className="section-eyebrow">02 — Trajetória</p>
-          <h2 className="section-title">Mais de 16 anos em varejo, saúde e IA</h2>
-        </Reveal>
-
-        <CareerGraph />
-
-        <div className="timeline">
-          {EXPERIENCE_RECENT.map((job, i) => (
-            <Reveal key={job.role + job.period} className="timeline-item" delay={i * 80}>
-              <span id={`exp-${i}`} className="anchor-offset" />
-              <div className="timeline-marker" />
-              <div className="timeline-content">
-                <p className="timeline-period">{job.period}</p>
-                <h3 className="timeline-role">{job.role}</h3>
-                <p className="timeline-org">{job.org}</p>
-                <ul className="timeline-bullets">
-                  {job.bullets.map((b) => (
-                    <li key={b}>{b}</li>
-                  ))}
-                </ul>
-                <div className="tag-row">
-                  {job.tags.map((t) => (
-                    <span key={t} className="tag">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-
-        <Reveal className="earlier-block">
-          <h3 className="earlier-title">Trajetória anterior (2009 — 2017)</h3>
-          <div className="earlier-list">
-            {EXPERIENCE_EARLIER.map((e) => (
-              <div key={e.period} id={e.id} className="earlier-item">
-                <span className="earlier-period">{e.period}</span>
-                <span className="earlier-text">{e.text}</span>
-              </div>
-            ))}
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-function Formacao() {
-  return (
-    <section id="formacao" className="section">
-      <div className="section-inner">
-        <Reveal>
-          <p className="section-eyebrow">03 — Formação</p>
-          <h2 className="section-title">Formação, certificações e prêmios</h2>
-        </Reveal>
-
-        <div className="formacao-grid">
-          <Reveal className="formacao-col">
-            <h3 className="formacao-col-title">Formação acadêmica</h3>
-            {EDUCATION.map((e) => (
-              <div key={e.course} className="edu-item">
-                <span className="edu-period">{e.period}</span>
-                <div>
-                  <p className="edu-course">{e.course}</p>
-                  <p className="edu-school">{e.school}</p>
-                </div>
-              </div>
-            ))}
-          </Reveal>
-
-          <Reveal className="formacao-col" delay={100}>
-            <h3 className="formacao-col-title">Certificações</h3>
-            <ul className="plain-list">
-              {CERTIFICATIONS.map((c) => (
-                <li key={c}>{c}</li>
-              ))}
-            </ul>
-
-            <h3 className="formacao-col-title formacao-col-title--spaced">Prêmios & reconhecimentos</h3>
-            <ul className="plain-list">
-              {AWARDS.map((a) => (
-                <li key={a}>{a}</li>
-              ))}
-            </ul>
-          </Reveal>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Skills() {
-  return (
-    <section id="skills" className="section">
-      <div className="section-inner">
-        <Reveal>
-          <p className="section-eyebrow">04 — Skills</p>
-          <h2 className="section-title">Ferramentas e competências</h2>
-        </Reveal>
-        <div className="skills-grid">
-          {Object.entries(SKILLS).map(([group, items], i) => (
-            <Reveal key={group} className="skills-group" delay={i * 100}>
-              <h3 className="skills-group-title">{group}</h3>
-              <div className="chip-row">
-                {items.map((s) => (
-                  <span key={s} className="chip">
-                    {s}
-                  </span>
-                ))}
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Projetos() {
-  return (
-    <section id="projetos" className="section">
-      <div className="section-inner">
-        <Reveal>
-          <p className="section-eyebrow">05 — Projetos</p>
-          <h2 className="section-title">Projetos pessoais e iniciativas de IA</h2>
-        </Reveal>
-        <div className="projects-grid">
-          {PROJECTS.map((p, i) => (
-            <Reveal key={p.title} className="project-card" delay={i * 90}>
-              <h3 className="project-title">{p.title}</h3>
-              <p className="project-desc">{p.desc}</p>
-              <div className="tag-row">
-                {p.tags.map((t) => (
-                  <span key={t} className="tag tag--muted">
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Contato() {
-  return (
-    <section id="contato" className="section section--footer">
-      <Reveal as="div" className="section-inner section-inner--narrow contact-block">
-        <p className="section-eyebrow">06 — Contato</p>
-        <h2 className="section-title">Vamos conversar</h2>
-        <p className="lead">
-          O LinkedIn reúne a trajetória. Para um problema da sua empresa, o caminho é o dos serviços.
-        </p>
-        <div className="contact-links">
-          <a href={PROFILE.linkedin} target="_blank" rel="noreferrer" className="btn btn--primary">
-            LinkedIn
-          </a>
-          <a href="#servicos" className="btn btn--ghost">
-            Serviços para empresas
-          </a>
-          {PROFILE.github ? (
-            <a href={PROFILE.github} target="_blank" rel="noreferrer" className="btn btn--ghost">
-              GitHub
-            </a>
-          ) : null}
-        </div>
-        <p className="footer-note">© {new Date().getFullYear()} {PROFILE.name}</p>
-      </Reveal>
-    </section>
-  );
-}
-
-function DiagnosticoCta() {
-  return (
-    <div className="diagnostico">
-      <div>
-        <h2 className="section-title diagnostico-title">Diagnóstico gratuito</h2>
-        <p className="lead">
-          Uma conversa para entender o problema e indicar por onde começar. O botão abre o WhatsApp com a mensagem pronta.
-        </p>
-      </div>
-      <a className="btn btn--primary" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
-        WhatsApp
-      </a>
-    </div>
-  );
-}
-
-function Servicos() {
-  return (
-    <>
-      <section id="servicos" className="section">
-        <div className="section-inner">
-          <Reveal>
-            <p className="section-eyebrow">Consultoria</p>
-            <h2 className="section-title section-title--tight">Serviços para empresas</h2>
-            <p className="lead services-lead">
-              Para pequenas e médias empresas que precisam transformar uma necessidade do dia a dia em site, automação ou agente de IA. Seis pacotes, cada um com o problema que resolve e um prazo típico. O valor é sob consulta.
-            </p>
-          </Reveal>
-          <Reveal>
-            <DiagnosticoCta />
-          </Reveal>
-          <div className="service-grid">
-            {SERVICES.map((service, i) => (
-              <Reveal key={service.title} className="service-card" delay={i * 70}>
-                <h3 className="project-title">{service.title}</h3>
-                <p className="service-kicker">Problema</p>
-                <p className="project-desc">{service.problem}</p>
-                <div className="service-meta">
-                  <div>
-                    <span className="service-kicker">Prazo típico</span>
-                    <p className="service-value">{service.deadline}</p>
-                  </div>
-                  <div>
-                    <span className="service-kicker">Valor</span>
-                    <p className="service-value">Sob consulta</p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="section-inner">
-          <Reveal>
-            <p className="section-eyebrow">Primeiro caso</p>
-            <h2 className="section-title">InovaLab</h2>
-          </Reveal>
-          <Reveal className="case-card">
-            <p className="project-desc case-summary">{CASE_INOVALAB.summary}</p>
-            <div className="case-split">
-              <div>
-                <p className="service-kicker">Antes</p>
-                <p className="project-desc">{CASE_INOVALAB.before}</p>
-              </div>
-              <div>
-                <p className="service-kicker">Depois</p>
-                <p className="project-desc">{CASE_INOVALAB.after}</p>
-              </div>
-            </div>
-            <a className="door-go" href={CASE_INOVALAB.href} target="_blank" rel="noreferrer">
-              inovalab3d.vercel.app
-            </a>
-          </Reveal>
-          <Reveal>
-            <DiagnosticoCta />
-          </Reveal>
-          <p className="footer-note">© {new Date().getFullYear()} {PROFILE.name}</p>
-        </div>
-      </section>
-    </>
-  );
-}
-
-function viewFromHash(hash) {
-  const id = hash.replace('#', '');
-  if (id === 'servicos') return 'servicos';
-  if (
-    id === 'perfil' ||
-    id === 'trajetoria' ||
-    id === 'formacao' ||
-    id === 'skills' ||
-    id === 'projetos' ||
-    id === 'contato' ||
-    id.startsWith('exp-') ||
-    id.startsWith('earlier-')
-  ) {
-    return 'perfil';
-  }
-  return 'home';
-}
-
-function useHash() {
-  const [hash, setHash] = useState(() => window.location.hash || '#inicio');
-
-  useEffect(() => {
-    const onHashChange = () => setHash(window.location.hash || '#inicio');
-    window.addEventListener('hashchange', onHashChange);
-    return () => window.removeEventListener('hashchange', onHashChange);
+function ge() {
+  let e = (0, l.useRef)(null),
+    t = pe(),
+    [n, r] = (0, l.useState)(null),
+    [i, a] = (0, l.useState)({ x: 0, y: 0 });
+  (0, l.useEffect)(() => {
+    let t = e.current;
+    if (!t) return;
+    let n = new IntersectionObserver(
+      ([e]) => {
+        t.classList.toggle(`is-offscreen`, !e.isIntersecting);
+      },
+      { threshold: 0.12 },
+    );
+    n.observe(t);
+    return () => n.disconnect();
   }, []);
-
-  useEffect(() => {
-    const id = hash.replace('#', '');
-    if (!id || id === 'inicio' || id === 'top' || id === 'perfil' || id === 'servicos') {
-      window.scrollTo(0, 0);
-      return undefined;
-    }
-    const frame = window.requestAnimationFrame(() => {
-      document.getElementById(id)?.scrollIntoView();
-    });
-    return () => window.cancelAnimationFrame(frame);
-  }, [hash]);
-
-  return hash;
+  function o(n) {
+    if (t || n.pointerType !== `mouse`) return;
+    let r = e.current;
+    if (!r) return;
+    let i = r.getBoundingClientRect(),
+      o = (n.clientX - i.left) / i.width - 0.5,
+      s = (n.clientY - i.top) / i.height - 0.5;
+    a({ x: o * 10, y: s * 10 });
+  }
+  function s() {
+    a({ x: 0, y: 0 });
+    r(null);
+  }
+  function c(e) {
+    r((t) => (t === e ? null : e));
+  }
+  return (0, f.jsx)(`div`, {
+    ref: e,
+    className: `hub${t ? ` is-static` : ``}`,
+    onPointerMove: o,
+    onPointerLeave: s,
+    style: { "--hub-shift-x": `${i.x}px`, "--hub-shift-y": `${i.y}px` },
+    children: (0, f.jsxs)(`div`, {
+      className: `hub-stage`,
+      children: [
+        (0, f.jsx)(he, { reduced: t }),
+        (0, f.jsxs)(`div`, {
+          className: `hub-core`,
+          children: [
+            (0, f.jsx)(`div`, { className: `hub-rays` }),
+            (0, f.jsx)(me, {}),
+            (0, f.jsxs)(`div`, {
+              className: `hub-label`,
+              children: [
+                (0, f.jsx)(`span`, {
+                  className: `hub-label-main`,
+                  children: `HUB`,
+                }),
+                (0, f.jsx)(`span`, {
+                  className: `hub-label-sub`,
+                  children: `de IA`,
+                }),
+              ],
+            }),
+            (0, f.jsxs)(`div`, {
+              className: `pedestal`,
+              "aria-hidden": !0,
+              children: [
+                (0, f.jsx)(`div`, { className: `plate plate-a` }),
+                (0, f.jsx)(`div`, { className: `plate plate-b` }),
+                (0, f.jsx)(`div`, { className: `plate plate-c` }),
+              ],
+            }),
+          ],
+        }),
+        (0, f.jsx)(`div`, {
+          className: `hub-orbit`,
+          children: se.map((e) => {
+            let t = n === e.id;
+            return (0, f.jsx)(
+              `div`,
+              {
+                className: `hub-slot`,
+                style: {
+                  left: `calc(50% + ${Math.sin((e.angle * Math.PI) / 180) * 36}%)`,
+                  top: `calc(50% - ${Math.cos((e.angle * Math.PI) / 180) * 36}%)`,
+                },
+                children: (0, f.jsxs)(`button`, {
+                  type: `button`,
+                  className: `hub-card${t ? ` is-active` : ``}`,
+                  "aria-label": e.label,
+                  "aria-pressed": t,
+                  onMouseEnter: () => r(e.id),
+                  onFocus: () => r(e.id),
+                  onClick: () => c(e.id),
+                  children: [
+                    (0, f.jsx)(`span`, {
+                      className: `hub-card-icon`,
+                      children: (0, f.jsx)(x, { name: e.icon }),
+                    }),
+                    (0, f.jsx)(`span`, {
+                      className: `hub-card-label`,
+                      children: e.label,
+                    }),
+                  ],
+                }),
+              },
+              e.id,
+            );
+          }),
+        }),
+      ],
+    }),
+  });
+}
+function _e() {
+  return (0, f.jsxs)(`section`, {
+    className: `hero`,
+    id: `inicio`,
+    children: [
+      (0, f.jsxs)(`div`, {
+        className: `hero-bg`,
+        "aria-hidden": !0,
+        children: [
+          (0, f.jsx)(`div`, { className: `hero-vignette` }),
+          (0, f.jsx)(`div`, { className: `hero-dots` }),
+          (0, f.jsx)(`div`, { className: `hero-floor` }),
+        ],
+      }),
+      (0, f.jsxs)(`div`, {
+        className: `hero-grid`,
+        children: [
+          (0, f.jsxs)(`div`, {
+            className: `hero-copy`,
+            children: [
+              (0, f.jsx)(`p`, { className: `kicker`, children: oe.kicker }),
+              (0, f.jsx)(`h1`, { children: oe.name }),
+              (0, f.jsxs)(`p`, {
+                className: `role`,
+                children: [
+                  oe.rolePrefix,
+                  (0, f.jsx)(`span`, { children: oe.roleHighlight }),
+                ],
+              }),
+              (0, f.jsx)(`p`, { className: `tagline`, children: oe.tagline }),
+              (0, f.jsx)(`ul`, {
+                className: `stats`,
+                children: oe.stats.map((e) =>
+                  (0, f.jsxs)(
+                    `li`,
+                    {
+                      children: [
+                        (0, f.jsx)(`strong`, { children: e.value }),
+                        (0, f.jsx)(`span`, { children: e.label }),
+                      ],
+                    },
+                    e.label,
+                  ),
+                ),
+              }),
+              (0, f.jsxs)(`div`, {
+                className: `hero-actions`,
+                children: [
+                  (0, f.jsxs)(`a`, {
+                    className: `btn btn-primary`,
+                    href: `#projetos`,
+                    children: [`Ver projetos`, (0, f.jsx)(y, {})],
+                  }),
+                  (0, f.jsx)(`a`, {
+                    className: `btn btn-ghost`,
+                    href: `#contato`,
+                    children: `Fale comigo`,
+                  }),
+                ],
+              }),
+              (0, f.jsxs)(`section`, {
+                className: `knowledge`,
+                "aria-labelledby": `knowledge-title`,
+                children: [
+                  (0, f.jsx)(`h2`, {
+                    className: `knowledge-title`,
+                    id: `knowledge-title`,
+                    children: `Caixa de conhecimentos`,
+                  }),
+                  (0, f.jsx)(`ul`, {
+                    className: `knowledge-grid`,
+                    children: oe.tools.map((e) =>
+                      (0, f.jsxs)(
+                        `li`,
+                        {
+                          children: [
+                            (0, f.jsx)(ie, { name: e }),
+                            (0, f.jsx)(`span`, { children: e }),
+                          ],
+                        },
+                        e,
+                      ),
+                    ),
+                  }),
+                ],
+              }),
+            ],
+          }),
+          (0, f.jsx)(ge, {}),
+        ],
+      }),
+    ],
+  });
+}
+function ve() {
+  return (0, f.jsx)(`section`, {
+    className: `section`,
+    id: `projetos`,
+    children: (0, f.jsxs)(`div`, {
+      className: `wrap`,
+      children: [
+        (0, f.jsxs)(`header`, {
+          className: `section-head`,
+          children: [
+            (0, f.jsx)(`p`, { className: `kicker`, children: `Iniciativas` }),
+            (0, f.jsx)(`h2`, { children: `Projetos` }),
+          ],
+        }),
+        (0, f.jsx)(`div`, {
+          className: `project-grid`,
+          children: ce.map((e) =>
+            (0, f.jsxs)(
+              `article`,
+              {
+                className: `project-card`,
+                children: [
+                  (0, f.jsx)(`p`, {
+                    className: `project-context`,
+                    children: e.context,
+                  }),
+                  (0, f.jsx)(`div`, {
+                    className: `project-card-top`,
+                    children: (0, f.jsx)(`h3`, { children: e.name }),
+                  }),
+                  (0, f.jsx)(`p`, { children: e.description }),
+                ],
+              },
+              e.name,
+            ),
+          ),
+        }),
+        (0, f.jsx)(`h3`, {
+          className: `project-subhead`,
+          children: `Projetos pessoais`,
+        }),
+        (0, f.jsx)(`p`, {
+          className: `lede project-sublede`,
+          children: `Iniciativas pessoais, fora do ambiente de trabalho.`,
+        }),
+        (0, f.jsx)(`div`, {
+          className: `project-grid`,
+          children: le.map((e) =>
+            (0, f.jsxs)(
+              `article`,
+              {
+                className: `project-card`,
+                children: [
+                  (0, f.jsx)(`div`, {
+                    className: `project-card-top`,
+                    children: (0, f.jsx)(`h3`, { children: e.name }),
+                  }),
+                  (0, f.jsx)(`p`, { children: e.description }),
+                  (0, f.jsxs)(`a`, {
+                    className: `project-link`,
+                    href: e.href,
+                    target: `_blank`,
+                    rel: `noopener noreferrer`,
+                    children: [`Acesse aqui`, (0, f.jsx)(b, {})],
+                  }),
+                ],
+              },
+              e.name,
+            ),
+          ),
+        }),
+      ],
+    }),
+  });
+}
+function ye() {
+  let [e, t] = (0, l.useState)(null);
+  return (0, f.jsx)(`section`, {
+    className: `section`,
+    id: `trajetoria`,
+    children: (0, f.jsxs)(`div`, {
+      className: `wrap`,
+      children: [
+        (0, f.jsxs)(`header`, {
+          className: `section-head`,
+          children: [
+            (0, f.jsx)(`p`, { className: `kicker`, children: `Carreira` }),
+            (0, f.jsx)(`h2`, { children: `Trajetória` }),
+            (0, f.jsx)(`p`, {
+              className: `lede`,
+              children: `Mais de 16 anos em tecnologia, com atuação em varejo, shopping centers e saúde. Clique ou toque em cada experiência para ver o detalhamento.`,
+            }),
+          ],
+        }),
+        (0, f.jsx)(`ol`, {
+          className: `timeline`,
+          children: ue.map((n, r) => {
+            let i = n.role !== n.company,
+              a = e === r,
+              o = `traj-panel-${r}`,
+              s = `traj-btn-${r}`;
+            return (0, f.jsxs)(
+              `li`,
+              {
+                children: [
+                  (0, f.jsx)(`div`, { className: `tl-dot`, "aria-hidden": !0 }),
+                  (0, f.jsxs)(`div`, {
+                    className: `tl-card${a ? ` is-open` : ``}`,
+                    children: [
+                      (0, f.jsx)(`h3`, {
+                        children: (0, f.jsxs)(`button`, {
+                          type: `button`,
+                          className: `tl-trigger`,
+                          id: s,
+                          "aria-expanded": a,
+                          "aria-controls": o,
+                          onClick: () => t(a ? null : r),
+                          children: [
+                            (0, f.jsxs)(`span`, {
+                              className: `tl-trigger-text`,
+                              children: [
+                                (0, f.jsx)(`span`, {
+                                  className: `tl-period`,
+                                  children: n.period,
+                                }),
+                                (0, f.jsxs)(`span`, {
+                                  className: `tl-role`,
+                                  children: [
+                                    i ? n.role : n.company,
+                                    i
+                                      ? (0, f.jsxs)(`span`, {
+                                          children: [` · `, n.company],
+                                        })
+                                      : null,
+                                  ],
+                                }),
+                              ],
+                            }),
+                            (0, f.jsx)(`span`, {
+                              className: `tl-chevron`,
+                              "aria-hidden": !0,
+                              children: a ? `–` : `+`,
+                            }),
+                          ],
+                        }),
+                      }),
+                      (0, f.jsx)(`p`, { children: n.text }),
+                      (0, f.jsx)(`div`, {
+                        id: o,
+                        role: `region`,
+                        "aria-labelledby": s,
+                        className: `tl-panel`,
+                        hidden: !a,
+                        children: (0, f.jsx)(`ul`, {
+                          className: `tl-bullets`,
+                          children: n.details.map((e) =>
+                            (0, f.jsx)(`li`, { children: e }, e),
+                          ),
+                        }),
+                      }),
+                    ],
+                  }),
+                ],
+              },
+              `${n.company}-${n.period}-${r}`,
+            );
+          }),
+        }),
+      ],
+    }),
+  });
+}
+function be({ items: e }) {
+  return (0, f.jsx)(`ul`, {
+    className: `edu-grid`,
+    children: e.map((e) =>
+      (0, f.jsxs)(
+        `li`,
+        {
+          className: `edu-card`,
+          children: [
+            (0, f.jsx)(`h3`, { children: e.title }),
+            e.org
+              ? (0, f.jsx)(`p`, { className: `edu-org`, children: e.org })
+              : null,
+            e.detail ? (0, f.jsx)(`p`, { children: e.detail }) : null,
+          ],
+        },
+        e.title,
+      ),
+    ),
+  });
+}
+function xe() {
+  return (0, f.jsxs)(f.Fragment, {
+    children: [
+      (0, f.jsx)(`section`, {
+        className: `section`,
+        id: `formacao`,
+        children: (0, f.jsxs)(`div`, {
+          className: `wrap`,
+          children: [
+            (0, f.jsxs)(`header`, {
+              className: `section-head`,
+              children: [
+                (0, f.jsx)(`p`, { className: `kicker`, children: `Estudos` }),
+                (0, f.jsx)(`h2`, { children: `Formação` }),
+              ],
+            }),
+            (0, f.jsx)(be, { items: de }),
+          ],
+        }),
+      }),
+      (0, f.jsx)(`section`, {
+        className: `section`,
+        id: `certificacoes`,
+        children: (0, f.jsxs)(`div`, {
+          className: `wrap`,
+          children: [
+            (0, f.jsxs)(`header`, {
+              className: `section-head`,
+              children: [
+                (0, f.jsx)(`p`, {
+                  className: `kicker`,
+                  children: `Qualificações`,
+                }),
+                (0, f.jsx)(`h2`, { children: `Certificações e Cursos` }),
+              ],
+            }),
+            (0, f.jsx)(be, { items: fe }),
+          ],
+        }),
+      }),
+    ],
+  });
+}
+function Se() {
+  return (0, f.jsx)(`section`, {
+    className: `section`,
+    id: `contato`,
+    children: (0, f.jsxs)(`div`, {
+      className: `wrap contact-wrap`,
+      children: [
+        (0, f.jsxs)(`header`, {
+          className: `section-head`,
+          children: [
+            (0, f.jsx)(`p`, { className: `kicker`, children: `Contato` }),
+            (0, f.jsx)(`h2`, { children: `Fale comigo` }),
+            (0, f.jsx)(`p`, {
+              className: `lede`,
+              children: `Vamos conversar sobre inovação, IA e projetos. Me encontre no LinkedIn.`,
+            }),
+          ],
+        }),
+        (0, f.jsxs)(`a`, {
+          className: `btn btn-primary btn-lg`,
+          href: `https://www.linkedin.com/in/diegoarruda/`,
+          target: `_blank`,
+          rel: `noopener noreferrer`,
+          "aria-label": `LinkedIn de Diego Arruda, abre em uma nova aba`,
+          children: [(0, f.jsx)(ee, {}), `LinkedIn`],
+        }),
+      ],
+    }),
+  });
+}
+function Ce() {
+  return (0, f.jsx)(`footer`, {
+    className: `site-footer`,
+    children: (0, f.jsx)(`div`, {
+      className: `wrap`,
+      children: (0, f.jsx)(`p`, {
+        children: `© 2026 Diego Arruda · Osasco-SP`,
+      }),
+    }),
+  });
+}
+function we() {
+  return (0, f.jsxs)(f.Fragment, {
+    children: [
+      (0, f.jsx)(`a`, {
+        className: `skip-link`,
+        href: `#conteudo`,
+        children: `Ir para o conteúdo`,
+      }),
+      (0, f.jsx)(ae, {}),
+      (0, f.jsxs)(`main`, {
+        id: `conteudo`,
+        children: [
+          (0, f.jsx)(_e, {}),
+          (0, f.jsx)(ve, {}),
+          (0, f.jsx)(ye, {}),
+          (0, f.jsx)(xe, {}),
+          (0, f.jsx)(Se, {}),
+        ],
+      }),
+      (0, f.jsx)(Ce, {}),
+    ],
+  });
 }
 
-export default function App() {
-  const hash = useHash();
-  const view = viewFromHash(hash);
-
-  return (
-    <div className="page">
-      <Nav view={view} />
-      <main>
-        {view === 'home' ? <Home /> : null}
-        {view === 'perfil' ? (
-          <>
-            <Sobre />
-            <Trajetoria />
-            <Formacao />
-            <Skills />
-            <Projetos />
-            <Contato />
-          </>
-        ) : null}
-        {view === 'servicos' ? <Servicos /> : null}
-      </main>
-    </div>
-  );
-}
+export default we;
