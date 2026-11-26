@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="DA">
+  <rect width="64" height="64" rx="14" fill="#06101c"/>
+  <rect x="1.5" y="1.5" width="61" height="61" rx="13" fill="none" stroke="#22e0ff" stroke-width="1.5" opacity="0.85"/>
+  <text x="32" y="42" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-size="24" font-weight="800" fill="#f4f8ff">DA</text>
+</svg>
